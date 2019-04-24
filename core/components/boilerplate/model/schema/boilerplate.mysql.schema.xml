@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="boilerplate" baseClass="xPDOObject" platform="mysql" defaultEngine="InnoDB" phpdoc-package="boilerplate"
+       version="1.1">
+
+    <object class="BoilerplateSocial" table="boilerplate_socials" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="true" default=""/>
+        <field key="link" dbtype="text" phptype="string" null="true" default=""/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+
+        <index alias="name" name="name" primary="false" unique="false" type="BTREE">
+            <column key="name" length="" collation="A" null="false"/>
+        </index>
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+    </object>
+    
+    <object class="BoilerplateCounter" table="boilerplate_counters" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="context" dbtype="varchar" precision="100" phptype="string" null="false" default="web"/>
+        <field key="content" dbtype="text" phptype="string" null="true" default=""/>
+        <field key="position" dbtype="text" phptype="string" null="true" default=""/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+    </object>
+    
+
+</model>
