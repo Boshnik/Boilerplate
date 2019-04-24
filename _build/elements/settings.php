@@ -153,10 +153,17 @@ return [
     ],
     'boilerplate_compress_output_html' => [
         'namespace' => 'boilerplate',
-        'name'      => 'setting_compress_output_html',  
+        'name'      => 'setting_boilerplate_compress_output_html',  
         'area'      => 'default',
         'xtype'     => 'combo-boolean',
         'value'     => '1',
+    ],
+    'boilerplate_hide_vtabs_tv' => [
+        'namespace' => 'boilerplate',
+        'name'      => 'setting_boilerplate_hide_vtabs_tv',  
+        'area'      => 'default',
+        'xtype'     => 'combo-boolean',
+        'value'     => '0',
     ],
     'boilerplate_tpl_css' => [
         'namespace' => 'boilerplate',
@@ -171,10 +178,5 @@ return [
         'area'      => 'tpl',
         'xtype'     => 'textfield',
         'value'     => '<link rel="preload" href="[[+file]]" as="script"><script src="[[+file]]" defer></script>'
-    ],
-    'boilerplate_social' => [
-        'xtype' => 'textfield',
-        'value' => '[["behance","Behance"], ["dribbble", "Dribbble"], ["facebook-f","Facebook"], ["github","Github"],["google-plus-g","Google Plus"],["instagram","Instagram"],["linkedin","LinkedIn"],["odnoklassniki","Odnoklassniki"],["pinterest","Pinterest"],["skype","Skype"],["slack","Slack"],["telegram","Telegram"],["twitter","Twitter"],["viber","Viber"],["vimeo","Vimeo"],["vk","Vkontakte"],["whatsapp","WhatsApp"],["youtube","Youtube"]]',
-        'area' => 'social',
-    ],
+    ]
 ];

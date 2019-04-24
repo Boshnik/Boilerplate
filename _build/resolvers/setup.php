@@ -9,7 +9,7 @@ if (!$transport->xpdo || !($transport instanceof xPDOTransport)) {
 $modx =& $transport->xpdo;
 $packages = [
     'Ace' => [
-        'version' => '1.6.5-pl',
+        'version' => '1.8.0-pl',
         'service_url' => 'modstore.pro',
     ],
     'AjaxForm' => [
@@ -17,11 +17,11 @@ $packages = [
         'service_url' => 'modstore.pro',
     ],
     'autoRedirector' => [
-        'version' => '0.1.0-beta',
+        'version' => '1.0.2-rc',
         'service_url' => 'modstore.pro',
     ],
     'controlErrorLog' => [
-        'version' => '1.2.1-pl',
+        'version' => '1.3.0-pl',
         'service_url' => 'modstore.pro',
     ],
     // 'MobileDetect' => [
@@ -29,19 +29,19 @@ $packages = [
     //     'service_url' => 'modstore.pro',
     // ],
     'MinifyX' => [
-        'version' => '1.6.0-pl',
+        'version' => '1.7.1-pl',
         'service_url' => 'modstore.pro',
     ],
     'mixedImage' => [
-        'version' => '2.0.0-beta',
+        'version' => '2.0.6-beta',
         'service_url' => 'modstore.pro',
     ],
     'phpThumbOn' => [
-        'version' => '1.3.3-beta',
+        'version' => '1.3.5-beta2',
         'service_url' => 'modstore.pro',
     ],
     'pdoTools' => [
-        'version' => '2.11.2-pl',
+        'version' => '2.12.3-pl',
         'service_url' => 'modstore.pro',
     ],
     // 'TVTable' => [
@@ -57,12 +57,12 @@ $packages = [
     //     'service_url' => 'modx.com',
     // ],
     'FormIt' => [
-        'version' => '4.1.0-pl',
+        'version' => '4.2.3-pl',
         'service_url' => 'modx.com',
         'author' => 'sterc'
     ],
     'MIGX' => [
-        'version' => '2.11.0-pl',
+        'version' => '2.12.0-pl',
         'service_url' => 'modx.com',
         'author' => 'Bruno17',
     ],
@@ -79,7 +79,7 @@ $packages = [
         'service_url' => 'modx.com',
     ],
     'SEO Tab' => [
-        'version' => '2.1.0-pl',
+        'version' => '2.2.0-pl',
         'service_url' => 'modx.com',
     ]
 ];

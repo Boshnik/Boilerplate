@@ -137,14 +137,16 @@ class Boilerplate
                 
                 break;
             case 'OnManagerPageInit':
-                $managerCss = 'boilerplate/mgr/manager.css';
+                $managerCss = 'components/boilerplate/mgr/manager.css';
                 if(file_exists(MODX_ASSETS_PATH . $managerCss)) {
                     $this->modx->regClientCSS('/assets/'.$managerCss);
                 }
                 
-                // fontawesome
-                $fontawesome = '<script defer src="https://use.fontawesome.com/releases/v5.4.1/js/all.js" integrity="sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7" crossorigin="anonymous"></script>';
-                $this->modx->regClientStartupScript($fontawesome);
+                // Hide vertical tab for tv
+                $hideVTabsCss = 'components/boilerplate/mgr/hidevtabs.css';
+                if($this->modx->getOption('boilerplate_hide_vtabs_tv') && file_exists(MODX_ASSETS_PATH . $hideVTabsCss)) {
+                    $this->modx->regClientCSS('/assets/'.$hideVTabsCss);
+                }
                 
                 break;
                 

@@ -1,4 +1,4 @@
-{set $title = 'seoPro.title' | placeholder}
+{set $title = $_modx->resource.longtitle ?: $_modx->resource.pagetitle}
 {set $description = $_modx->resource.description | replace :' "':' «' | replace :'"':'»'}
 {set $page = 'site_url' | config ~ $_modx->resource.uri}
 
