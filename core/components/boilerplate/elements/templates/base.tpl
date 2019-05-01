@@ -23,7 +23,7 @@
         ]}
     {/block}
 </head>
-<body class="body page-{$_modx->resource.id} parent-{$_modx->resource.parent}">
+<body class="body loading page-{$_modx->resource.id} parent-{$_modx->resource.parent}">
     
     
     {* CONTENT *}
