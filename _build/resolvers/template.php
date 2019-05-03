@@ -12,6 +12,7 @@ if ($object->xpdo) {
 			
 			foreach ($modx->getCollection('modTemplate') as $template) {
                 if( $template->templatename == 'Начальный шаблон' || $template->id == 1) {
+                    $template->set('templatename', 'BaseTemplate');
                     $template->set('source', 1);
                     $template->set('static', 1);
                     $template->set('static_file', $static_file);
