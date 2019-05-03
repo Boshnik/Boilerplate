@@ -9,7 +9,7 @@
  - **SEO Tab** (настройка страницы для поисковых систем)
  - **SEO Pro** (настройка шаблона сайта в поисковой выдачи)
 
-   MODSTORE.PRO
+  **MODSTORE.PRO**
  - **Ace** (лучший редактор кода)
  - **AjaxForm** (отправка форм через Ajax)
  - **controlErrorLog** (управление журналом ошибок)
@@ -33,8 +33,6 @@
 ### Чанки
  - **head** (файловый елемент)
 
-### Сниппеты
- - **social** (вывод соц. сетей)
 
 ### Плагины
  - **Boilerplate**
@@ -50,8 +48,9 @@
  
 ### Системные настройки
 **CORE**
+ 
  | Ключ | Значение | Описание |
- | ---- | -------- | -------- | 
+ | -- | -- | -- | 
  | allow_multiple_emails | нет | чтобы у каждого пользователя была своя электронная почта |
  | friendly_alias_realtime | да | генерация псевдонима в реальном времени |
  | friendly_urls | да | включение дружественных URL |
@@ -67,25 +66,34 @@
  | error_page_header | HTTP/1.0 404 Not Found | заголовок для 404 ошибки |
  | error_page | id 404 | id 404 страницы |
  | site_unavailable_page | id 503 | id 503 страницы |
+ 
+ 
 **PDOTOOLS**
+
  | Ключ | Значение | Описание |
- | ---- | -------- | -------- |
+ | -- | -- | -- |
  | pdotools_fenom_default | 1 | использование Fenom в чанках |
  | pdotools_fenom_modx | 1 | разрешаем MODX в Fenom |
  | pdotools_fenom_parser | 1 | использование Fenom на страницах |
  | pdotools_elements_path | {core_path}/ | для загрузки файловых элементов |
+ 
 **TINYCOMPRESSOR**
+
  | Ключ | Значение | Описание |
- | ---- | -------- | -------- |
+ | -- | -- | -- |
  | tinycompressor_tinypng_upload_enable | Да | сжимает загружаемые изображения |
+ 
 **TINYMCERTE**
+
  | Ключ | Значение | Описание |
- | ---- | -------- | -------- |
+ | -- | -- | -- |
  | tinymcerte.plugins | advlist autolink lists modximage charmap print preview anchor visualblocks searchreplace code fullscreen insertdatetime media table contextmenu paste modxlink textcolor colorpicker |
  | tinymcerte.toolbar1 | undo redo \| styleselect \| backcolor forecolor bold italic \| alignleft aligncenter alignright alignjustify \| bullist numlist outdent indent \| link image |
+ 
 **BOILERPLATE**
+
  | Ключ | Значение | Описание |
- | ---- | -------- | -------- |
+ | -- | -- | -- |
  | boilerplate_compress_output_html | да | сжимает вывод html для Google |
  | boilerplate_tpl_css | <link rel="preload" href="[[+file]]" as="style" onload="this.onload=null;this.rel='stylesheet'"> | Шаблон загрузки css |  
  | boilerplate_tpl_js | <link rel="preload" href="[[+file]]" as="script"><script src="[[+file]]" defer></script> | Шаблон загрузки js |
