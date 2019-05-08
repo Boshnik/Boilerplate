@@ -52,10 +52,10 @@ $packages = [
         'version' => '2.0.2-beta',
         'service_url' => 'modstore.pro',
     ],
-    // 'ClientConfig' => [
-    //     'version' => '2.0.0-pl',
-    //     'service_url' => 'modx.com',
-    // ],
+    'ClientConfig' => [
+        'version' => '2.0.0-pl',
+        'service_url' => 'modx.com',
+    ],
     'FormIt' => [
         'version' => '4.2.3-pl',
         'service_url' => 'modx.com',
