@@ -10,6 +10,7 @@
 
 .modx-richtext {width: 98%;height: 140px;border-color: #E4E4E4;padding: 5px 1%;border-radius: 3px;font-family: inherit;line-height: 120%;}
 .tvtEditor input {width: 14% !important;}
+.x-window-body .tvtEditor input {width: 98% !important;}
 .tvtEditor input.add,
 .tvtEditor input.del,
 .tvtEditor input.del_item,
