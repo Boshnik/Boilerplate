@@ -2,7 +2,7 @@
 <html lang="{$.en ? 'en-US' : 'ru-RU'}">
 <head>
     {block 'head'}
-        {include 'file:components/boilerplate/elements/chunks/head.tpl'}
+        {include 'head.tpl'}
     {/block}
     {block 'minifyx'}
         {'!MinifyX' | snippet : [
@@ -12,7 +12,6 @@
             'registerJs' => 'startup',
             'preHooks' => 'libs.php',
             'hooks' => '',
-            'cssTpl' => 'boilerplate_tpl_css' | config,
             'jsTpl' => 'boilerplate_tpl_js' | config,
             'libsCss' => 'bootstrapCss,ajaxFormCss,magnificCss,sweetAlertCss',
             'libsJs' => 'polifillJsCDN,jqueryJsCDN,ajaxFormJs,ajaxFormJsInit--inline,lazySizesJs,fontAwesomeJs,magnificJs,sweetAlertJs,cssrelpreloadJs--inline',
