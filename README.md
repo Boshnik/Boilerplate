@@ -31,8 +31,12 @@
     - SiteMap (sitemap.xml)
     - Robots (robots.txt)
 
+### Шаблоны
+ - BaseTemplate (главный шаблон)
+ - Service (для системных страниц)    
+
 ### Чанки
- - **head** (файловый елемент)
+ - **head**
 
 
 ### Плагины
@@ -67,6 +71,7 @@
  | error_page_header | HTTP/1.0 404 Not Found | заголовок для 404 ошибки |
  | error_page | id 404 | id 404 страницы |
  | site_unavailable_page | id 503 | id 503 страницы |
+ | log_deprecated | Нет | отключает уведомление об использовании устаревших функций |
  
  
 **PDOTOOLS**

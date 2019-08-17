@@ -15,16 +15,16 @@ return array(
     
     // BOOTSTRAP
     'bootstrapCss' => [
-        '/assets/libs/bootstrap/bootstrap.4.1.3.min.css'
+        '/assets/libs/bootstrap/bootstrap.4.3.1.min.css'
     ],
     'bootstrapJs' => [
-        '/assets/libs/bootstrap/bootstrap.4.1.3.min.js'
+        '/assets/libs/bootstrap/bootstrap.4.3.1.min.js'
     ],
     'bootstrapCssCDN' => [
-        '//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
+        '//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
     ],
     'bootstrapJsCDN' => [
-        '//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'
+        '//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'
     ],
     
     // CSSRELPELOAD

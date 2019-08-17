@@ -13,10 +13,14 @@ class BoilerplatePackage
     /** @var modCategory $vehicle */
     public $category;
     public $category_attributes = [];
+    public $listElements = array(
+        'chunks' => [],
+        'templates' => [],
+        'packages' => [],
+    );
 
     protected $_idx = 1;
-
-
+    
     /**
      * BoilerplatePackage constructor.
      *
@@ -52,6 +56,11 @@ class BoilerplatePackage
         $this->modx->setLogTarget($this->config['log_target']);
 
         $this->initialize();
+        
+        $packages = include($this->config['elements'] . 'packages.php');
+        foreach($packages as $name => $pack){
+            $this->listElements['packages'][] = $name;
+        }
     }
 
 
@@ -418,12 +427,15 @@ class BoilerplatePackage
                 'description' => @$data['description'],
                 'snippet' => $this::_getContent($this->config['core'] . 'elements/chunks/' . $data['file'] . '.tpl'),
                 'static' => !empty($this->config['static']['chunks']),
-                'source' => 1,
+                'source' => 0,
                 'static_file' => 'core/components/' . $this->config['name_lower'] . '/elements/chunks/' . $data['file'] . '.tpl',
             ], $data), '', true, true);
             $objects[$name]->setProperties(@$data['properties']);
         }
         $this->category->addMany($objects);
+        foreach ($objects as $chunk) {
+            $this->listElements['chunks'][] = $chunk->name;
+        }
         $this->modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($objects) . ' Chunks');
     }
 
@@ -448,6 +460,7 @@ class BoilerplatePackage
         ];
         $objects = [];
         foreach ($templates as $name => $data) {
+            if($name == 'BaseTemplate') continue;
             /** @var modTemplate[] $objects */
             $objects[$name] = $this->modx->newObject('modTemplate');
             $objects[$name]->fromArray(array_merge([
@@ -455,11 +468,15 @@ class BoilerplatePackage
                 'description' => $data['description'],
                 'content' => $this::_getContent($this->config['core'] . 'elements/templates/' . $data['file'] . '.tpl'),
                 'static' => !empty($this->config['static']['templates']),
-                'source' => 1,
+                'source' => 0,
+                'category' => 0,
                 'static_file' => 'core/components/' . $this->config['name_lower'] . '/elements/templates/' . $data['file'] . '.tpl',
             ], $data), '', true, true);
         }
         $this->category->addMany($objects);
+        foreach ($objects as $template) {
+            $this->listElements['templates'][] = $template->templatename;
+        }
         $this->modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($objects) . ' Templates');
     }
 
@@ -648,6 +665,8 @@ class BoilerplatePackage
             }
             if ($vehicle->resolve('php', ['source' => $this->config['resolvers'] . $resolver])) {
                 $this->modx->log(modX::LOG_LEVEL_INFO, 'Added resolver ' . preg_replace('#\.php$#', '', $resolver));
+            } else {
+                $this->modx->log(modX::LOG_LEVEL_INFO, 'Could not add resolver "' . $resolver . '" to category.');
             }
         }
         $this->builder->putVehicle($vehicle);
@@ -656,6 +675,12 @@ class BoilerplatePackage
             'changelog' => file_get_contents($this->config['core'] . 'docs/changelog.txt'),
             'license' => file_get_contents($this->config['core'] . 'docs/license.txt'),
             'readme' => file_get_contents($this->config['core'] . 'docs/readme.txt'),
+            'chunks' => $this->listElements['chunks'],
+            'templates' => $this->listElements['templates'],
+            'packages' => $this->listElements['packages'],
+            'setup-options' => array(
+                'source' => $this->config['build'] . 'setup.options.php',
+            ),
         ]);
         $this->modx->log(modX::LOG_LEVEL_INFO, 'Added package attributes and setup options.');
 

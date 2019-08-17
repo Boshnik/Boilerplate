@@ -2,7 +2,7 @@
 <html lang="{$.en ? 'en-US' : 'ru-RU'}">
 <head>
     {block 'head'}
-        {include 'head.tpl'}
+        {include 'head'}
     {/block}
     {block 'minifyx'}
         {'!MinifyX' | snippet : [
@@ -24,22 +24,10 @@
 </head>
 <body class="{block 'classesBody'}body loading page-{$_modx->resource.id} parent-{$_modx->resource.parent}{/block}">
     
-    
     {* CONTENT *}
     {block 'content'}
-    {if $_modx->resource.content?}
-        <section class="section-content" id="{$_modx->resource.alias}">
-            <div class="container">
-                <div class="row{if $_modx->resource.alias in ['403','404','503']} align-items-center text-center{/if}"{if $_modx->resource.alias in ['403','404','503']} style="min-height:100vh;"{/if}>
-                    <div class="col-12">
-                        {$_modx->resource.content}
-                    </div>
-                </div>
-            </div>
-        </section>
-    {/if}
+        {$_modx->resource.content}
     {/block}
-   
 
     {if $_modx->user.id == 1}
     <script>

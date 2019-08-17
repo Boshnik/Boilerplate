@@ -19,7 +19,7 @@ return [
                 '403' => [
                     'pagetitle' => '403',
                     'longtitle' => 'Доступ запрещен',
-                    'template' => 1,
+                    'template' => 2,
                     'hidemenu' => true,
                     'uri' => '403.html',
                     'uri_override' => true,
@@ -28,7 +28,7 @@ return [
                 '404' => [
                     'pagetitle' => '404',
                     'longtitle' => '404 error | Страница не найдена',
-                    'template' => 1,
+                    'template' => 2,
                     'hidemenu' => true,
                     'uri' => '404.html',
                     'uri_override' => true,
@@ -37,7 +37,7 @@ return [
                 '503' => [
                     'pagetitle' => '503',
                     'longtitle' => 'Сайт недоступен',
-                    'template' => 1,
+                    'template' => 2,
                     'hidemenu' => true,
                     'uri' => '503.html',
                     'uri_override' => true,
@@ -46,7 +46,7 @@ return [
                 'sitemap_html' => [
                     'pagetitle' => 'Карта сайта',
                     'alias' => 'sitemap.html',
-                    'template' => 1,
+                    'template' => 2,
                     'hidemenu' => true,
                     'uri' => 'sitemap.html',
                     'uri_override' => true,

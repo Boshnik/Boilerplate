@@ -7,6 +7,7 @@ if (!$transport->xpdo || !($transport instanceof xPDOTransport)) {
 }
 
 $modx =& $transport->xpdo;
+// $packages = include($modx->getOption('base_path') . 'Extras/Boilerplate/_build/elements/packages.php');
 $packages = [
     'Ace' => [
         'version' => '1.8.0-pl',
@@ -53,7 +54,7 @@ $packages = [
         'service_url' => 'modstore.pro',
     ],
     'ClientConfig' => [
-        'version' => '2.0.0-pl',
+        'version' => '2.1.0-pl',
         'service_url' => 'modx.com',
     ],
     'FormIt' => [
@@ -215,23 +216,23 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
     case xPDOTransport::ACTION_INSTALL:
     case xPDOTransport::ACTION_UPGRADE:
         
-        foreach ($packages as $name => $data) {
-            if (!is_array($data)) {
-                $data = ['version' => $data];
-            }
-            $installed = $modx->getIterator('transport.modTransportPackage', ['package_name' => $name]);
-            /** @var modTransportPackage $package */
-            foreach ($installed as $package) {
-                if ($package->compareVersion($data['version'], '<=')) {
-                    continue(2);
+        if (is_array($options['update_packages'])) {
+            foreach($options['update_packages'] as $name) {
+                $data = $packages[$name];
+                $installed = $modx->getIterator('transport.modTransportPackage', ['package_name' => $name]);
+                /** @var modTransportPackage $package */
+                foreach ($installed as $package) {
+                    if ($package->compareVersion($data['version'], '<=')) {
+                        continue(2);
+                    }
                 }
+                $modx->log(modX::LOG_LEVEL_INFO, "Trying to install <b>{$name}</b>. Please wait...");
+                $response = $installPackage($name, $data);
+                $level = $response['success']
+                    ? modX::LOG_LEVEL_INFO
+                    : modX::LOG_LEVEL_ERROR;
+                $modx->log($level, $response['message']);
             }
-            $modx->log(modX::LOG_LEVEL_INFO, "Trying to install <b>{$name}</b>. Please wait...");
-            $response = $installPackage($name, $data);
-            $level = $response['success']
-                ? modX::LOG_LEVEL_INFO
-                : modX::LOG_LEVEL_ERROR;
-            $modx->log($level, $response['message']);
         }
         break;
 
