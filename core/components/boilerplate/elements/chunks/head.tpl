@@ -1,4 +1,4 @@
-{set $title = $_modx->resource.longtitle ?: $_modx->resource.pagetitle}
+{set $title = ($_modx->resource.longtitle ?: $_modx->resource.pagetitle) | notags}
 {set $description = $_modx->resource.description | replace :' "':' «' | replace :'"':'»'}
 {set $page = 'site_url' | config ~ $_modx->resource.uri}
 
@@ -12,6 +12,8 @@
 <meta name="robots" content="{'seoTab.robotsTag' | placeholder}">
 
 <meta name="csrf-token" content="{$.session['csrf-token']}">
+
+{'!hreflang' | snippet}
 
 <!-- https://realfavicongenerator.net/ -->
 {*<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
