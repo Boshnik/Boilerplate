@@ -28,6 +28,7 @@
     {block 'content'}
         {include 'header'}
         {include 'content'}
+        {include 'footer'}
     {/block}
 
     {if $_modx->user.id == 1}

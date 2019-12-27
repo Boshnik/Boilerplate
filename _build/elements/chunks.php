@@ -13,4 +13,8 @@ return [
         'file' => 'content',
         'description' => '',
     ],
+    'footer' => [
+        'file' => 'footer',
+        'description' => '',
+    ],
 ];
