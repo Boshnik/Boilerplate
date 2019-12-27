@@ -105,27 +105,6 @@ class Boilerplate
                 break;
                 
             case 'OnWebPageInit':
-                if ($this->modx->context->key != 'mgr') {
-                    
-                    // Counters
-                    $query = $this->modx->newQuery('BoilerplateCounter');
-                    $query->select($this->modx->getSelectColumns('BoilerplateCounter', 'BoilerplateCounter', '', '', false));
-                    $query->prepare();
-                    $query->stmt->execute();
-                    $counters = $query->stmt->fetchAll(PDO::FETCH_ASSOC);
-                    
-                    foreach($counters as $counter) {
-                        if($counter['active'] && $this->modx->context->key == $counter['context']) {
-                            $code = $counter['content'];
-                            if($counter['position'] == 'Head') {
-                                $this->modx->regClientStartupHTMLBlock($code);
-                            } else {
-                                $this->modx->regClientHTMLBlock($code);
-                            }
-                        }
-                    }
-                    
-                }
 
                 break;    
             case 'OnWebPagePrerender':
