@@ -5,4 +5,8 @@ return [
         'file' => 'head',
         'description' => '',
     ],
+    'header' => [
+        'file' => 'header',
+        'description' => '',
+    ],
 ];

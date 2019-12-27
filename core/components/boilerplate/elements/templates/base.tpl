@@ -14,7 +14,7 @@
             'hooks' => '',
             'jsTpl' => 'boilerplate_tpl_js' | config,
             'libsCss' => 'bootstrapCss,ajaxFormCss,magnificCss,sweetAlertCss',
-            'libsJs' => 'polifillJsCDN,jqueryJsCDN,ajaxFormJs,ajaxFormJsInit--inline,lazySizesJs,fontAwesomeJs,magnificJs,sweetAlertJs,cssrelpreloadJs--inline',
+            'libsJs' => 'polifillJsCDN,jqueryJsCDN,bootstrapJs,ajaxFormJs,ajaxFormJsInit--inline,lazySizesJs,fontAwesomeJs,magnificJs,sweetAlertJs,cssrelpreloadJs--inline',
             'cssGroups' => '',
             'jsGroups' => '',
             'cssSources' => '',
@@ -26,6 +26,7 @@
     
     {* CONTENT *}
     {block 'content'}
+        {include 'header'}
         {$_modx->resource.content}
     {/block}
 
