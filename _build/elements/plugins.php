@@ -26,4 +26,11 @@ return [
             'OnMODXInit' => []
         ]
     ],
+    'uploadFiles' => [
+        'file' => 'uploadfiles',
+        'description' => 'Запрещает загрузку файлов в корневой каталог',
+        'events' => [
+            'OnFileManagerUpload' => []
+        ]
+    ],
 ];
