@@ -27,7 +27,7 @@
     {* CONTENT *}
     {block 'content'}
         {include 'header'}
-        {$_modx->resource.content}
+        {include 'content'}
     {/block}
 
     {if $_modx->user.id == 1}

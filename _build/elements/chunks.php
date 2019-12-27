@@ -9,4 +9,8 @@ return [
         'file' => 'header',
         'description' => '',
     ],
+    'content' => [
+        'file' => 'content',
+        'description' => '',
+    ],
 ];
