@@ -7,4 +7,11 @@ return [
             'x-default' => 'web',
         ],
     ],
+    'breadSchema' => [
+        'file' => 'breadschema',
+        'description' => '',
+        'properties' => [
+            
+        ],
+    ],
 ];

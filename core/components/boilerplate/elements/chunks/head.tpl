@@ -63,4 +63,6 @@
 }
 </script>
 
+{'!breadSchema' | snippet}
+
 <base href="{'site_url' | config}" />
