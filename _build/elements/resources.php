@@ -15,6 +15,7 @@ return [
             'template' => 0,
             'hidemenu' => true,
             'published' => false,
+            'alias_visible' => false,
             'resources' => [
                 '403' => [
                     'pagetitle' => '403',
@@ -61,7 +62,6 @@ return [
                     'content_type' => 2,
                 ],
                 'robots' => [
-                    'pagetitle' => 'Robots',
                     'pagetitle' => 'Robots.txt',
                     'alias' => 'robots',
                     'template' => '',
@@ -69,7 +69,15 @@ return [
                     'uri' => 'robots.txt',
                     'uri_override' => true,
                     'content_type' => 3
-                ]
+                ],
+                'policy' => [
+                    'pagetitle' => 'Политика конфиденциальности',
+                    'longtitle' => '',
+                    'template' => 1,
+                    'alias' => 'policy',
+                    'hidemenu' => true,
+                    'richtext' => 1,
+                ],
             ],
         ],
     ],
