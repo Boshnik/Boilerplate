@@ -130,10 +130,15 @@ class Boilerplate
                 break;    
             case 'OnWebPagePrerender':
                 
+                // Remove text/javascript
+                $content = str_replace('type="text/javascript"', ' ', $this->modx->resource->_output);
+
                 // Compress output html for Google
                 if($this->modx->getOption('boilerplate_compress_output_html') && $this->modx->resource->get('alias') != 'robots') {
-                    $this->modx->resource->_output = preg_replace('#\s+#', ' ', $this->modx->resource->_output);
+                    $content = preg_replace('#\s+#', ' ', $content);
                 }
+
+                $this->modx->resource->_output = $content;
                 
                 break;
             case 'OnManagerPageInit':
