@@ -19,4 +19,11 @@ return [
             'OnDocFormPrerender' => []
         ]
     ],
+    'changeContext' => [
+        'file' => 'changecontext',
+        'description' => 'Переключание контекстов',
+        'events' => [
+            'OnMODXInit' => []
+        ]
+    ],
 ];
