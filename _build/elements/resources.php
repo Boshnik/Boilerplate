@@ -69,15 +69,6 @@ return [
                     'uri_override' => true,
                     'content_type' => 2,
                 ],
-                'robots' => [
-                    'pagetitle' => 'Robots.txt',
-                    'alias' => 'robots',
-                    'template' => '',
-                    'hidemenu' => true,
-                    'uri' => 'robots.txt',
-                    'uri_override' => true,
-                    'content_type' => 3
-                ],
                 'policy' => [
                     'pagetitle' => 'Политика конфиденциальности',
                     'longtitle' => '',
