@@ -9,6 +9,10 @@ return [
         'file' => 'header',
         'description' => '',
     ],
+    'breadcrumbs' => [
+        'file' => 'breadcrumbs',
+        'description' => '',
+    ],
     'content' => [
         'file' => 'content',
         'description' => '',
