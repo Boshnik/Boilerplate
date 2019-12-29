@@ -27,7 +27,10 @@
     {* CONTENT *}
     {block 'content'}
         {include 'header'}
+        {include 'breadcrumb'}
         {include 'content'}
+        {include 'contacts'}
+        {include 'googlemap'}
         {include 'footer'}
     {/block}
 

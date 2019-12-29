@@ -18,10 +18,12 @@
 {/block}
 
 {block 'content'}
-    {if $_modx->resource.content?}
-        <section class="section-content" id="{$_modx->resource.alias}">
+   {include 'header'}
+   {include 'breadcrumbs'}
+   {if $_modx->resource.content?}
+        <section class="content">
             <div class="container">
-                <div class="row{if $_modx->resource.alias in ['403','404','503']} align-items-center text-center{/if}"{if $_modx->resource.alias in ['403','404','503']} style="min-height:100vh;"{/if}>
+                <div class="row{if $_modx->resource.alias in ['403','404','503']} align-items-center text-center{/if}">
                     <div class="col-12">
                         {$_modx->resource.content}
                     </div>
@@ -29,4 +31,5 @@
             </div>
         </section>
     {/if}
+    {include 'footer'}
 {/block}
