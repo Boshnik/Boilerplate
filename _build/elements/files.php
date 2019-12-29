@@ -16,5 +16,9 @@ return [
     'minifyx_hooks_ms2' => [
         'source' => $this->config['root'] . '_build/source/minifyx/hooks/ms2.php',
         'target' => "return MODX_CORE_PATH . 'components/minifyx/hooks/';",
+    ],
+    'robots.txt' => [
+        'source' => $this->config['root'] . '_build/source/robots.txt',
+        'target' => "return MODX_BASE_PATH;",
     ]
 ];
