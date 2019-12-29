@@ -13,6 +13,10 @@ return [
         'file' => 'content',
         'description' => '',
     ],
+    'contacts' => [
+        'file' => 'contacts',
+        'description' => '',
+    ],
     'footer' => [
         'file' => 'footer',
         'description' => '',
