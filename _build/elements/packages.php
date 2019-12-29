@@ -36,6 +36,10 @@ $packages = [
         'version' => '2.12.3-pl',
         'service_url' => 'modstore.pro',
     ],
+    'SocialNetworks' => [
+        'vesrion' => '1.0.4-pl',
+        'service_url' => 'modstore.pro',
+    ],
     // 'TVTable' => [
     //     'version' => '1.0.8-beta',
     //     'service_url' => 'modstore.pro',
@@ -43,6 +47,10 @@ $packages = [
     'tinyCompressor' => [
         'version' => '2.0.2-beta',
         'service_url' => 'modstore.pro',
+    ],
+    'Google Maps TV' => [
+        'version' => '1.1.0-pl',
+        'service_url' => 'modx.com',
     ],
     'ClientConfig' => [
         'version' => '2.1.0-pl',
@@ -73,7 +81,7 @@ $packages = [
     'SEO Tab' => [
         'version' => '2.2.0-pl',
         'service_url' => 'modx.com',
-    ]
+    ],
 ];
 
 return $packages;

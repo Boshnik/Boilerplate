@@ -45,6 +45,10 @@ $packages = [
         'version' => '2.12.3-pl',
         'service_url' => 'modstore.pro',
     ],
+    'SocialNetworks' => [
+        'vesrion' => '1.0.4-pl',
+        'service_url' => 'modstore.pro',
+    ],
     // 'TVTable' => [
     //     'version' => '1.0.8-beta',
     //     'service_url' => 'modstore.pro',
@@ -52,6 +56,10 @@ $packages = [
     'tinyCompressor' => [
         'version' => '2.0.2-beta',
         'service_url' => 'modstore.pro',
+    ],
+    'Google Maps TV' => [
+        'version' => '1.1.0-pl',
+        'service_url' => 'modx.com',
     ],
     'ClientConfig' => [
         'version' => '2.1.0-pl',
@@ -234,6 +242,30 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
                 $modx->log($level, $response['message']);
             }
         }
+        
+        // foreach ($packages as $name => $data) {
+        //     if (is_array($options['update_packages'])) {
+        //         if(!isset($options['update_packages'][$name])) {
+        //             continue;
+        //         }
+        //     } 
+        //     if (!is_array($data)) {
+        //         $data = ['version' => $data];
+        //     }
+        //     $installed = $modx->getIterator('transport.modTransportPackage', ['package_name' => $name]);
+        //     /** @var modTransportPackage $package */
+        //     foreach ($installed as $package) {
+        //         if ($package->compareVersion($data['version'], '<=')) {
+        //             continue(2);
+        //         }
+        //     }
+        //     $modx->log(modX::LOG_LEVEL_INFO, "Trying to install <b>{$name}</b>. Please wait...");
+        //     $response = $installPackage($name, $data);
+        //     $level = $response['success']
+        //         ? modX::LOG_LEVEL_INFO
+        //         : modX::LOG_LEVEL_ERROR;
+        //     $modx->log($level, $response['message']);
+        // }
         break;
 
     case xPDOTransport::ACTION_UNINSTALL:
