@@ -10,6 +10,14 @@ return [
             'hidemenu' => true,
             'richtext' => 1,
         ],
+        'contacts' => [
+            'pagetitle' => 'Контакты',
+            'longtitle' => '',
+            'template' => 1,
+            'alias' => 'contacts',
+            'hidemenu' => false,
+            'richtext' => 1,
+        ],
         'service' => [
             'pagetitle' => 'Служебные',
             'template' => 0,
