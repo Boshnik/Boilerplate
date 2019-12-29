@@ -1,5 +1,4 @@
 <?php
-
 /*  
     https://github.com/tanaevr/BreadCrumbsManager
     ppb_managerBreadCrumbs for modx 2.3.x
@@ -27,8 +26,7 @@ $limit = 3;
 if($modx->event->name != 'OnDocFormPrerender') return;
 
 $config = array();
-if(!function_exists(getBreadCrumbs)){
-    function getBreadCrumbs($resource,$modx,$limit) {
+function getBreadCrumbs($resource,$modx,$limit) {
         if (($modx === modSystemEvent::MODE_NEW) || !$resource) {
             if (!isset($_GET['parent'])) {return;}
             if (!$resource) {return;}
@@ -79,7 +77,7 @@ if(!function_exists(getBreadCrumbs)){
             }
             $crumbs[] = array(
                 'text' => $parent->get('pagetitle'),
-			    'url' => '?a=' . $action . '&id=' . $parent->get('id')
+                'url' => '?a=' . $action . '&id=' . $parent->get('id')
             );
         }
         
@@ -127,11 +125,11 @@ if(!function_exists(getBreadCrumbs)){
         $panel = "
             <script type='text/javascript' data-plugin='managerBreadCrumbs'>
             var modDevTools = function(config) {
-            	config = config || {};
-            	modDevTools.superclass.constructor.call(this,config);
+                config = config || {};
+                modDevTools.superclass.constructor.call(this,config);
             };
             Ext.extend(modDevTools,Ext.Component,{
-            	page:{},window:{},grid:{},tree:{},panel:{},combo:{},config: {},view: {},utils: {}
+                page:{},window:{},grid:{},tree:{},panel:{},combo:{},config: {},view: {},utils: {}
             });
             Ext.reg('moddevtools',modDevTools);
             
@@ -195,8 +193,8 @@ if(!function_exists(getBreadCrumbs)){
                 header.doLayout();
                 var crumbCmp = Ext.getCmp('resource-breadcrumbs');
                 var bd = { trail : {$crumbs}};
-		        crumbCmp.updateDetail(bd);
-		        Ext.getCmp('modx-resource-pagetitle').on('keyup', function(){
+                crumbCmp.updateDetail(bd);
+                Ext.getCmp('modx-resource-pagetitle').on('keyup', function(){
                     bd.trail[bd.trail.length-1] = {text: crumbCmp.getPagetitle()};
                     crumbCmp._updatePanel(bd);
                 });
@@ -205,6 +203,5 @@ if(!function_exists(getBreadCrumbs)){
         
         $modx->controller->addHtml($panel);
     }
-}
 getBreadCrumbs($resource,$modx,$limit);
 return;
