@@ -54,6 +54,9 @@
 <link href='//cdnjs.cloudflare.com' rel='dns-prefetch'>
 <link href='//unpkg.com/' rel='dns-prefetch'>
 
+<!-- preconnect -->
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+
 <script type="application/ld+json">
 {
    "@context": "http://schema.org",
