@@ -13,14 +13,14 @@ return [
         'name'      => 'setting_boilerplate_hide_vtabs_tv',  
         'area'      => 'default',
         'xtype'     => 'combo-boolean',
-        'value'     => '0',
+        'value'     => '1',
     ],
     'boilerplate_tpl_css' => [
         'namespace' => 'boilerplate',
         'name'      => 'setting_boilerplate_tpl_css',  
         'area'      => 'tpl',
         'xtype'     => 'textfield',
-        'value'     => '<link rel="preload" href="[[+file]]" as="style" onload="this.onload=null;this.rel='."'".stylesheet ."'".'"'.' >'
+        'value'     => '<link rel="stylesheet" href="[[+file]]" media="print" onload="this.media='."'".all ."'".'"'.' >'
     ],
     'boilerplate_tpl_js' => [
         'namespace' => 'boilerplate',

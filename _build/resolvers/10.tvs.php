@@ -1,10 +1,35 @@
 <?php
-$tvs = array();
-$tvsValue = array(
+$tvs = array(
     'googlemap' => array(
         'type' => 'mapstv',
         'caption' => 'Google map',
+        'category' => 'Карта',
     ),
+    // 'constructor' => array(
+    //     'type' => 'migx',
+    //     'caption' => 'Blocks constructor',
+    //     'category' => 'MIGX',
+    //     'input_properties' => array(
+    //         'configs' => 'Constructor',
+    //         'formtabs' => '',
+    //         'columns' => '',
+    //         'btntext' => '',
+    //         'previewurl' => '',
+    //         'jsonvarkey' => '',
+    //         'autoResourceFolders' => false,
+    //     ),
+    // ),
+    // 'slider' => array(
+    //     'type' => 'migx',
+    //     'caption' => 'Slider',
+    //     'category' => 'MIGX',
+    //     'input_properties' => array('configs' => 'migx.slider'),    
+    // ),
+);
+
+$tvsTemplate = array(
+    'googlemap' => 1,    
+    // 'constructor' => 1,    
 );
 
 if ($object->xpdo) {
@@ -14,63 +39,43 @@ if ($object->xpdo) {
     switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         case xPDOTransport::ACTION_INSTALL:
         case xPDOTransport::ACTION_UPGRADE:
-            
-            // Создаем категорию Карта
-            $categoryId = 0;
-            if(!$category = $modx->getObject('modCategory', array('category' => 'Карта'))) {
-                if($category = $modx->newObject('modCategory', array('category' => 'Карта'))) {
-                    $category->save();
+
+            // Получаем id категорий
+            foreach($tvs as $name => $value) {
+                if(!$category = $modx->getObject('modCategory', array('category' => $value['category']))) {
+                    if($category = $modx->newObject('modCategory', array('category' => $value['category']))) {
+                        $category->save();
+                    }
                 }
+                $tvs[$name]['category'] = $category->get('id') ?: 0;
             }
-            $categoryId = $category->get('id');
             
-            foreach($tvsValue as $name => $value) {
+            foreach($tvs as $name => $value) {
                 if (!$tv = $modx->getObject('modTemplateVar', array('name' => $name))) {
                     $tv = $modx->newObject('modTemplateVar');
-                    
-                    // Удаляем пробелы
-                    foreach($value as $key => $arr) {
-                        if(is_array($arr)) {
-                            $value[$key] = array_map('trim', $arr);
-                        }
-                    }
-          
-                    $tv->fromArray(array_merge(array('name' => $name), $value));
-                    $tv->set('category', $categoryId);
+                    $tv->fromArray(array_merge(array('name' => $name),$value));
                     $tv->save();
-                } else {
-                    // Обновляем TV
-                    if( $config['update']['tv'] ) {
-                        $tv->set('category', $categoryId);
-                        foreach($value as $n => $val) {
-                            $tv->set($n, $val);
-                        }
-                        $tv->save();
-                    }
-                    
                 }
-                if($name != 'img') {
-                    $tvs[] = $tv->get('id');   
-                }
+                
+                $tvs[$name]['id'] = $tv->get('id');
             }
     
-            // Применям тв для шаблона BaseTempalte
-            $tempalteID = 1;
-            if($template = $modx->getObject('modTemplate', array('id' => $tempalteID))) {
-                foreach ($tvs as $k => $tvid) {
-                    $record = array('tmplvarid' => $tvid, 'templateid' => $tempalteID);
+            // Применям шаблоны для tv
+            foreach ($tvsTemplate as $name => $value) {
+                if($template = $modx->getObject('modTemplate', array('id' => $value))) {
+                    $record = array('tmplvarid' => $tvs[$name]['id'], 'templateid' => $value);
                     if (!$tvt = $modx->getObject('modTemplateVarTemplate', $record)) {
                         $tvt = $modx->newObject('modTemplateVarTemplate');
-                        $tvt->set('tmplvarid', $tvid);
-                        $tvt->set('templateid', $tempalteID);
+                        foreach($record as $n => $v) {
+                            $tvt->set($n, $v);    
+                        }
                         $tvt->save();
-                    }
+                    }    
                 }
             }
-            
             break;
         case xPDOTransport::ACTION_UNINSTALL:
-            foreach($tvsValue as $name => $value) {
+            foreach($tvs as $name => $value) {
                 if ($tv = $modx->getObject('modTemplateVar', array('name' => $name))) {
                     if ($tv->remove() == false) {
                        echo "An error occurred while trying to remove the tv $name!";

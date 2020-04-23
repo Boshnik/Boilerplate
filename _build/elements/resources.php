@@ -5,7 +5,7 @@ return [
         'home' => [
             'pagetitle' => 'Главная',
             'longtitle' => '',
-            'template' => 1,
+            'template' => 10,
             'alias' => 'index',
             'hidemenu' => true,
             'richtext' => 1,
@@ -18,6 +18,16 @@ return [
             'hidemenu' => false,
             'richtext' => 1,
         ],
+        // 'base-of-blocks' => [
+        //     'pagetitle' => 'Base of blocks',
+        //     'longtitle' => '',
+        //     'template' => 1,
+        //     'alias' => 'base-of-blocks',
+        //     'hidemenu' => true,
+        //     'richtext' => 0,
+        //     'published' => 0,
+        //     'show_in_tree' => 0,
+        // ],
         'service' => [
             'pagetitle' => 'Служебные',
             'template' => 0,

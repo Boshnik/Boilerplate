@@ -409,7 +409,6 @@ class BoilerplatePackage
         $chunks = include($this->config['elements'] . 'chunks.php');
         if (!is_array($chunks)) {
             $this->modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in Chunks');
-
             return;
         }
         $this->category_attributes[xPDOTransport::RELATED_OBJECT_ATTRIBUTES]['Chunks'] = [
@@ -431,11 +430,10 @@ class BoilerplatePackage
                 'static_file' => 'core/components/' . $this->config['name_lower'] . '/elements/chunks/' . $data['file'] . '.tpl',
             ], $data), '', true, true);
             $objects[$name]->setProperties(@$data['properties']);
+            
+            $this->listElements['chunks'][] = $name;
         }
         $this->category->addMany($objects);
-        foreach ($objects as $chunk) {
-            $this->listElements['chunks'][] = $chunk->name;
-        }
         $this->modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($objects) . ' Chunks');
     }
 
@@ -449,7 +447,6 @@ class BoilerplatePackage
         $templates = include($this->config['elements'] . 'templates.php');
         if (!is_array($templates)) {
             $this->modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in Templates');
-
             return;
         }
         $this->category_attributes[xPDOTransport::RELATED_OBJECT_ATTRIBUTES]['Templates'] = [
@@ -460,7 +457,6 @@ class BoilerplatePackage
         ];
         $objects = [];
         foreach ($templates as $name => $data) {
-            if($name == 'BaseTemplate') continue;
             /** @var modTemplate[] $objects */
             $objects[$name] = $this->modx->newObject('modTemplate');
             $objects[$name]->fromArray(array_merge([
@@ -472,11 +468,10 @@ class BoilerplatePackage
                 'category' => 0,
                 'static_file' => 'core/components/' . $this->config['name_lower'] . '/elements/templates/' . $data['file'] . '.tpl',
             ], $data), '', true, true);
+            
+            $this->listElements['templates'][] = $name;
         }
         $this->category->addMany($objects);
-        foreach ($objects as $template) {
-            $this->listElements['templates'][] = $template->templatename;
-        }
         $this->modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($objects) . ' Templates');
     }
 
@@ -645,20 +640,6 @@ class BoilerplatePackage
 
         // Add resolvers into vehicle
         $resolvers = scandir($this->config['resolvers']);
-        // Remove Office files
-        if (!in_array('office', $resolvers)) {
-            if ($cache = $this->modx->getCacheManager()) {
-                $dirs = [
-                    $this->config['assets'] . 'js/office',
-                    $this->config['core'] . 'controllers/office',
-                    $this->config['core'] . 'processors/office',
-                ];
-                foreach ($dirs as $dir) {
-                    $cache->deleteTree($dir, ['deleteTop' => true, 'skipDirs' => false, 'extensions' => []]);
-                }
-            }
-            $this->modx->log(modX::LOG_LEVEL_INFO, 'Deleted Office files');
-        }
         foreach ($resolvers as $resolver) {
             if (in_array($resolver[0], ['_', '.'])) {
                 continue;

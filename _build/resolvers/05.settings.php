@@ -27,7 +27,7 @@ if ($object->xpdo) {
                 'friendly_urls_strict' => true,
                 'publish_default' => true,
                 'use_alias_path' => true,
-                'friendly_alias_translit' => 'russian',
+                'friendly_alias_translit' => 'rusandlat',
                 'resource_tree_node_name' => 'menutitle',
                 'resource_tree_node_tooltip' => 'alias',
                 'unauthorized_page' => $errors['403'],
@@ -42,8 +42,9 @@ if ($object->xpdo) {
                 'request_method_strict' => true,
                 'log_deprecated' => false,
                 'tinycompressor_tinypng_upload_enable' => true,
-                'tinymcerte.plugins' => 'advlist autolink lists modximage charmap print preview anchor visualblocks searchreplace code fullscreen insertdatetime media table contextmenu paste modxlink textcolor colorpicker',
-                'tinymcerte.toolbar1' => 'undo redo | styleselect | backcolor forecolor bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                'tinymcerte.plugins' => 'advlist autolink lists modximage charmap print preview anchor visualblocks searchreplace code fullscreen insertdatetime media table contextmenu paste modxlink textcolor colorpicker template',
+                'tinymcerte.toolbar1' => 'undo redo | styleselect | backcolor forecolor bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | template',
+                'tinymcerte.external_config' => '{assets_path}components/tinymcerte/js/external-config.json',
             ];
             foreach ($settings as $key => $value) {
                 /** @var modSystemSetting $setting */

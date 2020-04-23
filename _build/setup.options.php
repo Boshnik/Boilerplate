@@ -6,18 +6,6 @@ $output = null;
 switch ($options[xPDOTransport::PACKAGE_ACTION]) {
     case xPDOTransport::ACTION_INSTALL:
         // $exists = $modx->getObject('transport.modTransportPackage', array('package_name' => 'pdoTools'));
-    //     if (!empty($options['attributes']['packages'])) {
-    //         $packages = '<ul id="formCheckboxesPackages" style="height:auto;overflow:auto;">';
-    //         foreach ($options['attributes']['packages'] as $v => $p) {
-    //             $packages .= '
-				// <li class="package">
-				// 	<label>
-				// 		<input type="checkbox" name="update_packages[]" checked value="' . $v . '"> ' . $v . '
-				// 	</label>
-				// </li>';
-    //         }
-    //         $packages .= '</ul>';
-    //     }
         if (!empty($options['attributes']['packages'])) {
             $packages = '<ul id="formCheckboxesPackages" style="height:auto;overflow:auto;">';
             foreach ($options['attributes']['packages'] as $v => $p) {
@@ -31,10 +19,8 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
             $packages .= '</ul>';
         }
         break;
-    
     case xPDOTransport::ACTION_UPGRADE:
         // $exists = $modx->getObject('transport.modTransportPackage', array('package_name' => 'pdoTools'));
-        
         
         if (!empty($options['attributes']['templates'])) {
             $templates = '<ul id="formCheckboxesTemplate" style="height:auto;overflow:auto;">';

@@ -13,12 +13,18 @@ if ($object->xpdo) {
     switch ($options[xPDOTransport::PACKAGE_ACTION]) {
 		case xPDOTransport::ACTION_INSTALL:
 			foreach ($modx->getCollection('modTemplate') as $template) {
+                
                 if( $template->templatename == 'Начальный шаблон' || $template->id == 1) {
                     $template->set('templatename', 'BaseTemplate');
                     $template->set('source', 1);
                     $template->set('static', 0);
                     $template->set('category', 0);
                     $template->set('content', $baseTplContent);
+                    $template->save();
+                }
+                
+                if($template->templatename == 'Service') {
+                    $template->set('category', 0);
                     $template->save();
                 }
             }

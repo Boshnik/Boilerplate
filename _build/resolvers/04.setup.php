@@ -223,7 +223,6 @@ $installPackage = function ($packageName, $options = []) use ($modx, $downloadPa
 switch ($options[xPDOTransport::PACKAGE_ACTION]) {
     case xPDOTransport::ACTION_INSTALL:
     case xPDOTransport::ACTION_UPGRADE:
-        
         if (is_array($options['update_packages'])) {
             foreach($options['update_packages'] as $name) {
                 $data = $packages[$name];
@@ -243,29 +242,6 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
             }
         }
         
-        // foreach ($packages as $name => $data) {
-        //     if (is_array($options['update_packages'])) {
-        //         if(!isset($options['update_packages'][$name])) {
-        //             continue;
-        //         }
-        //     } 
-        //     if (!is_array($data)) {
-        //         $data = ['version' => $data];
-        //     }
-        //     $installed = $modx->getIterator('transport.modTransportPackage', ['package_name' => $name]);
-        //     /** @var modTransportPackage $package */
-        //     foreach ($installed as $package) {
-        //         if ($package->compareVersion($data['version'], '<=')) {
-        //             continue(2);
-        //         }
-        //     }
-        //     $modx->log(modX::LOG_LEVEL_INFO, "Trying to install <b>{$name}</b>. Please wait...");
-        //     $response = $installPackage($name, $data);
-        //     $level = $response['success']
-        //         ? modX::LOG_LEVEL_INFO
-        //         : modX::LOG_LEVEL_ERROR;
-        //     $modx->log($level, $response['message']);
-        // }
         break;
 
     case xPDOTransport::ACTION_UNINSTALL:

@@ -9,8 +9,8 @@ return [
         'source' => $this->config['root'] . '_build/source/minifyx/config/groups.php',
         'target' => "return MODX_CORE_PATH . 'components/minifyx/config/';",
     ],
-    'minifyx_hooks_libs' => [
-        'source' => $this->config['root'] . '_build/source/minifyx/hooks/libs.php',
+    'minifyx_hooks' => [
+        'source' => $this->config['root'] . '_build/source/minifyx/hooks/',
         'target' => "return MODX_CORE_PATH . 'components/minifyx/hooks/';",
     ],
     'minifyx_hooks_ms2' => [
@@ -20,5 +20,9 @@ return [
     'robots.txt' => [
         'source' => $this->config['root'] . '_build/source/robots.txt',
         'target' => "return MODX_BASE_PATH;",
+    ],
+    'tinymcerte' => [
+        'source' => $this->config['root'] . '_build/source/tinymcerte/js/external-config.json',
+        'target' => "return MODX_ASSETS_PATH . 'components/tinymcerte/js/';",
     ]
 ];

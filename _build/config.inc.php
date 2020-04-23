@@ -11,7 +11,7 @@ if (!defined('MODX_CORE_PATH')) {
 return [
     'name' => 'Boilerplate',
     'name_lower' => 'boilerplate',
-    'version' => '1.0.8',
+    'version' => '1.0.9',
     'release' => 'pl',
     // Install package to site right after build
     'install' => true,
@@ -20,12 +20,13 @@ return [
         'chunks' => false,
         'menus' => true,
         'plugins' => true,
-        'resources' => false,
-        'settings' => true,
+        'resources' => true,
+        'settings' => false,
         'snippets' => true,
         'templates' => false,
         'widgets' => false,
-        'symlinks' => false,
+        'symlinks' => true,
+        'tv' => false,
     ],
     // Which elements should be static by default
     'static' => [

@@ -8,7 +8,7 @@
 if ($transport->xpdo) {
     $modx =& $transport->xpdo;
     
-    $config = ['update' => ['symlink' => true]];
+    $config = ['update' => ['symlink' => false]];
     /** @var array $config */
     if (file_exists(MODX_BASE_PATH . 'Extras/Boilerplate/_build/config.inc.php')) {
         $config = include(MODX_BASE_PATH . 'Extras/Boilerplate/_build/config.inc.php');

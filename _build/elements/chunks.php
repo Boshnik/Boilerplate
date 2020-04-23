@@ -9,10 +9,6 @@ return [
         'file' => 'header',
         'description' => '',
     ],
-    'breadcrumbs' => [
-        'file' => 'breadcrumbs',
-        'description' => '',
-    ],
     'content' => [
         'file' => 'content',
         'description' => '',
@@ -29,4 +25,8 @@ return [
         'file' => 'footer',
         'description' => '',
     ],
+    // 'base-of-blocks' => [
+    //     'file' => 'baseofblocks',
+    //     'description' => '',
+    // ],
 ];
