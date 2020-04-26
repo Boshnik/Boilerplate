@@ -5,7 +5,7 @@ return [
         'home' => [
             'pagetitle' => 'Главная',
             'longtitle' => '',
-            'template' => 10,
+            'template' => 1,
             'alias' => 'index',
             'hidemenu' => true,
             'richtext' => 1,
