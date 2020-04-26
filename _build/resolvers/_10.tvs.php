@@ -5,31 +5,10 @@ $tvs = array(
         'caption' => 'Google map',
         'category' => 'Карта',
     ),
-    // 'constructor' => array(
-    //     'type' => 'migx',
-    //     'caption' => 'Blocks constructor',
-    //     'category' => 'MIGX',
-    //     'input_properties' => array(
-    //         'configs' => 'Constructor',
-    //         'formtabs' => '',
-    //         'columns' => '',
-    //         'btntext' => '',
-    //         'previewurl' => '',
-    //         'jsonvarkey' => '',
-    //         'autoResourceFolders' => false,
-    //     ),
-    // ),
-    // 'slider' => array(
-    //     'type' => 'migx',
-    //     'caption' => 'Slider',
-    //     'category' => 'MIGX',
-    //     'input_properties' => array('configs' => 'migx.slider'),    
-    // ),
 );
 
 $tvsTemplate = array(
     'googlemap' => 1,    
-    // 'constructor' => 1,    
 );
 
 if ($object->xpdo) {

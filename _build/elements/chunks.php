@@ -17,16 +17,8 @@ return [
         'file' => 'contacts',
         'description' => '',
     ],
-    'googlemap' => [
-        'file' => 'googlemap',
-        'description' => '',
-    ],
     'footer' => [
         'file' => 'footer',
         'description' => '',
     ],
-    // 'base-of-blocks' => [
-    //     'file' => 'baseofblocks',
-    //     'description' => '',
-    // ],
 ];
