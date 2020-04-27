@@ -20,7 +20,7 @@ return [
                 '403' => [
                     'pagetitle' => '403',
                     'longtitle' => 'Доступ запрещен',
-                    'template' => 2,
+                    'template' => 0,
                     'hidemenu' => true,
                     'uri' => '403.html',
                     'uri_override' => true,
@@ -38,7 +38,7 @@ return [
                 '503' => [
                     'pagetitle' => '503',
                     'longtitle' => 'Сайт недоступен',
-                    'template' => 2,
+                    'template' => 0,
                     'hidemenu' => true,
                     'uri' => '503.html',
                     'uri_override' => true,
@@ -47,7 +47,7 @@ return [
                 'sitemap_html' => [
                     'pagetitle' => 'Карта сайта',
                     'alias' => 'sitemap.html',
-                    'template' => 2,
+                    'template' => 0,
                     'hidemenu' => true,
                     'uri' => 'sitemap.html',
                     'uri_override' => true,
