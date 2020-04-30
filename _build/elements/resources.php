@@ -55,7 +55,7 @@ return [
                 'sitemap_xml' => [
                     'pagetitle' => 'SiteMap',
                     'alias' => 'sitemap.xml',
-                    'template' => '',
+                    'template' => 0,
                     'hidemenu' => true,
                     'uri' => 'sitemap.xml',
                     'uri_override' => true,
@@ -64,9 +64,11 @@ return [
                 'policy' => [
                     'pagetitle' => 'Политика конфиденциальности',
                     'longtitle' => '',
-                    'template' => 1,
+                    'template' => 2,
                     'alias' => 'policy',
                     'hidemenu' => true,
+                    'uri' => 'policy.html',
+                    'uri_override' => true,
                     'richtext' => 1,
                 ],
             ],
