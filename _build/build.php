@@ -15,7 +15,7 @@ class BoilerplatePackage
     public $category_attributes = [];
     public $listElements = array(
         'chunks' => [],
-        'templates' => [],
+        'templates' => ['BaseTemplate'],
         'packages' => [],
     );
 
@@ -468,7 +468,7 @@ class BoilerplatePackage
                 'category' => 0,
                 'static_file' => 'core/components/' . $this->config['name_lower'] . '/elements/templates/' . $data['file'] . '.tpl',
             ], $data), '', true, true);
-            
+
             $this->listElements['templates'][] = $name;
         }
         $this->category->addMany($objects);
@@ -662,6 +662,9 @@ class BoilerplatePackage
             'setup-options' => array(
                 'source' => $this->config['build'] . 'setup.options.php',
             ),
+            'requires' => array(
+                'pdotools' => '>=2.13.2',
+            )
         ]);
         $this->modx->log(modX::LOG_LEVEL_INFO, 'Added package attributes and setup options.');
 

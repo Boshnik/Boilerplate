@@ -39,7 +39,6 @@
  - **header**
  - **breadcrumbs**
  - **content**
- - **contacts**
  - **footer**
 
 ### Сниппеты
@@ -51,11 +50,6 @@
     - привязывается CSS-файл к странице редактирования ресурсов(assets/boilerplate/mgr/manager.css)
     - сжимает вывод html для Google (можно отменить в системных настройках boilerplate_compress_output_html)
     - возможность спрятать вертикальный таб для tv(системная настройка boilerplate_hide_vtabs_tv)
-    - модификаторы fenom:
-        - alias (генерирует alias)
-        - m2 (модифицирует строку m2 в квадратные метры)
-        - phone (убирает лишние символы для номера телефона)
-        - table (модифицирует значение поля table в таблицу)
  - **managerBreadCrumbs** (хлебные крошки в админке)
  - **changeContext** (переключение контекстов)
  - **uploadFiles** (запрещает загрузку файлов в корневой каталог)
@@ -111,8 +105,6 @@
  | Ключ | Значение | Описание |
  | -- | -- | -- |
  | boilerplate_compress_output_html | Да | сжимает вывод html для Google |
- | boilerplate_tpl_css | <link rel="stylesheet" href="[[+file]]" media="print" onload="this.media='."'".all ."'".'"'.' > | Шаблон загрузки css |  
- | boilerplate_tpl_js | <link rel="preload" href="[[+file]]" as="script"><script src="[[+file]]" defer></script> | Шаблон загрузки js |
  | boilerplate_hide_vtabs_tv | Нет | Прячет вертикальный таб для tv |
 
 ## Другое
@@ -124,8 +116,8 @@
     - Cache-Control: max-age=31536000, must-revalidate
  - Удаляется файл changelog.txt, чтобы убрать сообщение о том, что безопасность сайта не в порядке
  - Ппереименовываются файлы ht.access в корне и в папке /core/, чтобы заработали дружественные URL
- - Мменяем контент главного шаблона и делаем его статичным
- - Добавлены хуки для minifyX
-    - libs.php (для загрузки библиотек)
-    - ms2.php (инициализации minishop2, для поддержки асинхронной загрузке скриптов)
-    - loading.php (для прелоудера)
+ - Меняем контент главного шаблона
+    
+    
+## TODO
+ - https://netpeak.net/ru/blog/kak-rasshirit-predstavlenie-sayta-v-vydache-s-pomoshchyu-google-tag-manager/?spush=c3vwzxjib3nobmlrqhlhbmrlec5ydq==    

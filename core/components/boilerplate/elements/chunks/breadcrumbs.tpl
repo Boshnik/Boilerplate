@@ -1,4 +1,3 @@
-{set $site_url = 'site_url' | config}
 {if $_modx->resource.parent}
 <section class="crumb">
     <div class="container">

@@ -9,12 +9,12 @@ return [
         'file' => 'header',
         'description' => '',
     ],
-    'content' => [
-        'file' => 'content',
+    'breadcrumbs' => [
+        'file' => 'breadcrumbs',
         'description' => '',
     ],
-    'contacts' => [
-        'file' => 'contacts',
+    'content' => [
+        'file' => 'content',
         'description' => '',
     ],
     'footer' => [

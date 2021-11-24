@@ -25,10 +25,6 @@ $packages = [
         'version' => '1.3.0-pl',
         'service_url' => 'modstore.pro',
     ],
-    // 'MobileDetect' => [
-    //     'version' => '2.0.0-pl',
-    //     'service_url' => 'modstore.pro',
-    // ],
     'MinifyX' => [
         'version' => '1.7.1-pl',
         'service_url' => 'modstore.pro',
@@ -41,18 +37,14 @@ $packages = [
         'version' => '1.3.5-beta2',
         'service_url' => 'modstore.pro',
     ],
-    'pdoTools' => [
-        'version' => '2.12.3-pl',
-        'service_url' => 'modstore.pro',
-    ],
     'SocialNetworks' => [
         'vesrion' => '1.0.4-pl',
         'service_url' => 'modstore.pro',
     ],
-    // 'TVTable' => [
-    //     'version' => '1.0.8-beta',
-    //     'service_url' => 'modstore.pro',
-    // ],
+     'TVTable' => [
+         'version' => '1.0.8-beta',
+         'service_url' => 'modstore.pro',
+     ],
     'tinyCompressor' => [
         'version' => '2.0.2-beta',
         'service_url' => 'modstore.pro',

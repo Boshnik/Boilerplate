@@ -41,7 +41,6 @@ class Boilerplate
         if (!isset($_SESSION['csrf-token'])) {
             $_SESSION['csrf-token'] = bin2hex(openssl_random_pseudo_bytes(16));
         }
-
     }
     
     /**
@@ -87,26 +86,9 @@ class Boilerplate
                 
                 $fenom->addAccessorSmart('en', 'en', Fenom::ACCESSOR_PROPERTY);
                 $fenom->en = $this->modx->getOption('cultureKey') == 'en';
-                
-                // modifiers fenom
-                $modifiers = array_diff(scandir($this->config['modifiersPath']), array('..', '.'));
-                if(is_array($modifiers)) {
-                    foreach($modifiers as $modifier) {
-                        include($this->config['modifiersPath'] . $modifier);
-                    }
-                }
-                break;
-
-            case 'OnHandleRequest':
-                if ($this->modx->context->key == 'mgr') {
-                    return;
-                }
 
                 break;
-                
-            case 'OnWebPageInit':
 
-                break;    
             case 'OnWebPagePrerender':
                 
                 // Remove text/javascript
@@ -121,13 +103,13 @@ class Boilerplate
                 
                 break;
             case 'OnManagerPageInit':
-                $managerCss = 'components/boilerplate/mgr/manager.css';
+                $managerCss = 'components/boilerplate/css/mgr/manager.css';
                 if(file_exists(MODX_ASSETS_PATH . $managerCss)) {
                     $this->modx->regClientCSS('/assets/'.$managerCss);
                 }
                 
                 // Hide vertical tab for tv
-                $hideVTabsCss = 'components/boilerplate/mgr/hidevtabs.css';
+                $hideVTabsCss = 'components/boilerplate/css/mgr/hidevtabs.css';
                 if($this->modx->getOption('boilerplate_hide_vtabs_tv') && file_exists(MODX_ASSETS_PATH . $hideVTabsCss)) {
                     $this->modx->regClientCSS('/assets/'.$hideVTabsCss);
                 }

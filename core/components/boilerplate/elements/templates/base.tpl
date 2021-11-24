@@ -1,36 +1,31 @@
+{set $site_name = 'site_name' | config}
+{set $site_url = 'site_url' | config}
+
 <!DOCTYPE html>
-<html lang="{$.en ? 'en-US' : 'ru-RU'}">
+<html
+    lang="{$.en ? 'en-US' : 'ru-RU'}"
+    dir="ltr"
+    itemscope
+    itemtype="https://schema.org/WebPage"
+    prefix="og:http://ogp.me/ns#"
+>
 <head>
     {block 'head'}
         {include 'head'}
     {/block}
-    {block 'minifyx'}
-        {'!MinifyX' | snippet : [
-            'minifyCss' => 1,
-            'minifyJs' => 1,
-            'registerCss' => 'default',
-            'registerJs' => 'startup',
-            'preHooks' => 'libs.php',
-            'hooks' => '',
-            'jsTpl' => 'boilerplate_tpl_js' | config,
-            'libsCss' => 'bootstrapCss,ajaxFormCss,magnificCss,sweetAlertCss',
-            'libsJs' => 'polifillJsCDN,jqueryJsCDN,bootstrapJs,ajaxFormJs,ajaxFormJsInit--inline,lazySizesJs,fontAwesomeJs,magnificJs,sweetAlertJs,cssrelpreloadJs--inline',
-            'cssGroups' => '',
-            'jsGroups' => '',
-            'cssSources' => '',
-            'jsSources'  => ''
-        ]}
-    {/block}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
-<body class="{block 'classesBody'}body loading page-{$_modx->resource.id} parent-{$_modx->resource.parent}{/block}">
+<body>
     
     {* CONTENT *}
     {block 'content'}
         {include 'header'}
-        {include 'breadcrumb'}
+        {include 'breadcrumbs'}
         {include 'content'}
-        {include 'contacts'}
-        {include 'googlemap'}
         {include 'footer'}
     {/block}
 

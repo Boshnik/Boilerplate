@@ -1,16 +1,15 @@
 {set $title = ($_modx->resource.longtitle ?: $_modx->resource.pagetitle) | notags}
 {set $description = $_modx->resource.description | replace :' "':' «' | replace :'"':'»'}
-{set $page = 'site_url' | config ~ $_modx->resource.uri}
+{set $page = $site_url ~ $_modx->resource.uri}
 
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,shrink-to-fit=no">
 
-<title>{$title} | {'site_name' | config}</title>
+<title>{$title} | {$site_name}</title>
 <meta name="description" content="{$description}">
 <meta name="keywords" content="{'seoPro.keywords' | placeholder}">
 <meta name="robots" content="{'seoTab.robotsTag' | placeholder}">
-
 <meta name="csrf-token" content="{$.session['csrf-token']}">
 
 {'!hreflang' | snippet}
@@ -23,22 +22,21 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">*}
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-<!-- Facebook Open Graph -->
-<meta property="og:url" content="{$page}">
+<!-- Facebook -->
 <meta property="og:type" content="website">
+<meta property="og:url" content="{$page}">
 <meta property="og:title" content="{$title}">
-<meta property="og:image" content="">
 <meta property="og:description" content="{$description}">
-<meta property="og:site_name" content="{'site_name' | config}">
+<meta property="og:image" content="">
+<meta property="og:locale" content="{$.en ? 'en_US' : 'ru_RU'}">
 
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@site_account">
-<meta name="twitter:creator" content="@individual_account">
-<meta name="twitter:url" content="{$page}">
+<meta name="twitter:card" content="app">
 <meta name="twitter:title" content="{$title}">
 <meta name="twitter:description" content="{$description}">
+<meta name="twitter:url" content="{$page}">
 <meta name="twitter:image" content="">
 
 <!-- Schema.org -->
@@ -46,16 +44,9 @@
 <meta itemprop="description" content="{$description}">
 <meta itemprop="image" content="">
 
-<!-- dns-prefetch -->
-<link href='//fonts.googleapis.com' rel='dns-prefetch'>
-<link href='//ajax.googleapis.com' rel='dns-prefetch'>
-<link href='//cdn.jsdelivr.net' rel='dns-prefetch'>
-<link href='//cdn.polyfill.io' rel='dns-prefetch'>
-<link href='//cdnjs.cloudflare.com' rel='dns-prefetch'>
-<link href='//unpkg.com/' rel='dns-prefetch'>
-
-<!-- preconnect -->
-<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -67,5 +58,4 @@
 </script>
 
 {'!breadSchema' | snippet}
-
-<base href="{'site_url' | config}" />
+<base href="{$site_url}" />

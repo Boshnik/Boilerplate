@@ -7,7 +7,6 @@ return [
         'events' => [
             'OnMODXInit' => [],
             'pdoToolsOnFenomInit' => [],
-            'OnWebPageInit' => [],
             'OnWebPagePrerender' => [],
             'OnManagerPageInit' => [],
         ],

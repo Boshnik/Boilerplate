@@ -1,5 +1,5 @@
 <?php
-// Меняем контент главного шаблона
+// Обновляем чанки
 if ($object->xpdo) {
 	/** @var modX $modx */
 	$modx =& $object->xpdo;

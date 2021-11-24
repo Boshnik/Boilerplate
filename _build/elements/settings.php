@@ -15,18 +15,4 @@ return [
         'xtype'     => 'combo-boolean',
         'value'     => '1',
     ],
-    'boilerplate_tpl_css' => [
-        'namespace' => 'boilerplate',
-        'name'      => 'setting_boilerplate_tpl_css',  
-        'area'      => 'tpl',
-        'xtype'     => 'textfield',
-        'value'     => '<link rel="stylesheet" href="[[+file]]" media="print" onload="this.media='."'".all ."'".'"'.' >'
-    ],
-    'boilerplate_tpl_js' => [
-        'namespace' => 'boilerplate',
-        'name'      => 'setting_boilerplate_tpl_js',  
-        'area'      => 'tpl',
-        'xtype'     => 'textfield',
-        'value'     => '<link rel="preload" href="[[+file]]" as="script"><script src="[[+file]]" defer></script>'
-    ]
 ];

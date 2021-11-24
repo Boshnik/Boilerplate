@@ -8,7 +8,7 @@ if ($object->xpdo) {
         case xPDOTransport::ACTION_INSTALL:
         case xPDOTransport::ACTION_UPGRADE:
             
-            if ($object = $modx->getObject('modContentType',array('name'=>'HTML'))){
+            if ($object = $modx->getObject('modContentType', ['name'=>'HTML'])){
                 $object->set('headers', [
                     'X-Frame-Options:deny',
                     'X-XSS-Protection:1;mode=block',
