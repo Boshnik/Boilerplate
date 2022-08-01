@@ -11,10 +11,10 @@ if (!defined('MODX_CORE_PATH')) {
 return [
     'name' => 'Boilerplate',
     'name_lower' => 'boilerplate',
-    'version' => '1.2.0',
+    'version' => '1.2.1',
     'release' => 'pl',
     // Install package to site right after build
-    'install' => false,
+    'install' => true,
     // Which elements should be updated on package upgrade
     'update' => [
         'chunks' => false,
@@ -25,7 +25,7 @@ return [
         'snippets' => true,
         'templates' => false,
         'widgets' => false,
-        'symlinks' => false,
+        'symlinks' => true,
         'tv' => false,
     ],
     // Which elements should be static by default

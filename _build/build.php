@@ -88,65 +88,6 @@ class BoilerplatePackage
 
 
     /**
-     * Update the model
-     */
-    protected function model()
-    {
-        if (empty($this->config['core'] . 'model/schema/' . $this->config['name_lower'] . '.mysql.schema.xml')) {
-            return;
-        }
-        /** @var xPDOCacheManager $cache */
-        if ($cache = $this->modx->getCacheManager()) {
-            $cache->deleteTree(
-                $this->config['core'] . 'model/' . $this->config['name_lower'] . '/mysql',
-                ['deleteTop' => true, 'skipDirs' => false, 'extensions' => []]
-            );
-        }
-
-        /** @var xPDOManager $manager */
-        $manager = $this->modx->getManager();
-        /** @var xPDOGenerator $generator */
-        $generator = $manager->getGenerator();
-        $generator->parseSchema(
-            $this->config['core'] . 'model/schema/' . $this->config['name_lower'] . '.mysql.schema.xml',
-            $this->config['core'] . 'model/'
-        );
-        $this->modx->log(modX::LOG_LEVEL_INFO, 'Model updated');
-    }
-
-
-    /**
-     * Install nodejs and update assets
-     */
-    protected function assets()
-    {
-        $output = [];
-        if (!file_exists($this->config['build'] . 'node_modules')) {
-            putenv('PATH=' . trim(shell_exec('echo $PATH')) . ':' . dirname(MODX_BASE_PATH) . '/');
-            if (file_exists($this->config['build'] . 'package.json')) {
-                $this->modx->log(modX::LOG_LEVEL_INFO, 'Trying to install or update nodejs dependencies');
-                $output = [
-                    shell_exec('cd ' . $this->config['build'] . ' && npm config set scripts-prepend-node-path true && npm install'),
-                ];
-            }
-            if (file_exists($this->config['build'] . 'gulpfile.js')) {
-                $output = array_merge($output, [
-                    shell_exec('cd ' . $this->config['build'] . ' && npm link gulp'),
-                    shell_exec('cd ' . $this->config['build'] . ' && gulp copy'),
-                ]);
-            }
-            if ($output) {
-                $this->modx->log(xPDO::LOG_LEVEL_INFO, implode("\n", array_map('trim', $output)));
-            }
-        }
-        if (file_exists($this->config['build'] . 'gulpfile.js')) {
-            $output = shell_exec('cd ' . $this->config['build'] . ' && gulp default 2>&1');
-            $this->modx->log(xPDO::LOG_LEVEL_INFO, 'Compile scripts and styles ' . trim($output));
-        }
-    }
-
-
-    /**
      * Add settings
      */
     protected function settings()
@@ -429,8 +370,10 @@ class BoilerplatePackage
                 'source' => 0,
                 'static_file' => 'core/components/' . $this->config['name_lower'] . '/elements/chunks/' . $data['file'] . '.tpl',
             ], $data), '', true, true);
-            $objects[$name]->setProperties(@$data['properties']);
-            
+            if (isset($data['properties'])) {
+                $objects[$name]->setProperties(@$data['properties']);
+            }
+
             $this->listElements['chunks'][] = $name;
         }
         $this->category->addMany($objects);
@@ -596,9 +539,6 @@ class BoilerplatePackage
      */
     public function process()
     {
-        // $time_start = microtime(true);
-        $this->model();
-        $this->assets();
 
         // Add elements
         $elements = scandir($this->config['elements']);
@@ -662,9 +602,6 @@ class BoilerplatePackage
             'setup-options' => array(
                 'source' => $this->config['build'] . 'setup.options.php',
             ),
-            'requires' => array(
-                'pdotools' => '>=2.13.2',
-            )
         ]);
         $this->modx->log(modX::LOG_LEVEL_INFO, 'Added package attributes and setup options.');
 
@@ -674,9 +611,6 @@ class BoilerplatePackage
         if (!empty($this->config['install'])) {
             $this->install();
         }
-        
-        // $time = microtime(true) - $time_start;
-        // $this->modx->log(modX::LOG_LEVEL_INFO, "Time: $time");
 
         return $this->builder;
     }
@@ -690,7 +624,6 @@ if (!file_exists(dirname(__FILE__) . '/config.inc.php')) {
 $config = require(dirname(__FILE__) . '/config.inc.php');
 $install = new BoilerplatePackage(MODX_CORE_PATH, $config);
 $builder = $install->process();
-
 
 if (!empty($config['download'])) {
     $name = $builder->getSignature() . '.transport.zip';

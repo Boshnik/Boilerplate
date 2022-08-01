@@ -1,5 +1,5 @@
 <?php
-// подключает репозиторий modstore.pro.
+
 $provider_name = 'modstore.pro';
 
 if ($object->xpdo) {

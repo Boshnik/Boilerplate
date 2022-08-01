@@ -1,5 +1,5 @@
 <?php
-// Удаляется файл changelog.txt, чтобы убрать сообщение о том, что безопасность сайта не в порядке
+
 if ($object->xpdo) {
 	/** @var modX $modx */
 	$modx =& $object->xpdo;

@@ -1,5 +1,5 @@
 <?php
-// Обновляем чанки
+
 if ($object->xpdo) {
 	/** @var modX $modx */
 	$modx =& $object->xpdo;

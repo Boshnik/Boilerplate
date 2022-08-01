@@ -7,7 +7,6 @@ if (!$transport->xpdo || !($transport instanceof xPDOTransport)) {
 }
 
 $modx =& $transport->xpdo;
-// $packages = include($modx->getOption('base_path') . 'Extras/Boilerplate/_build/elements/packages.php');
 $packages = [
     'Ace' => [
         'version' => '1.8.0-pl',
@@ -29,8 +28,8 @@ $packages = [
         'version' => '1.7.1-pl',
         'service_url' => 'modstore.pro',
     ],
-    'mixedImage' => [
-        'version' => '2.0.6-beta',
+    'pdoTools' => [
+        'version' => '2.13.2-pl',
         'service_url' => 'modstore.pro',
     ],
     'phpThumbOn' => [
@@ -41,7 +40,7 @@ $packages = [
         'vesrion' => '1.0.4-pl',
         'service_url' => 'modstore.pro',
     ],
-     'TVTable' => [
+    'TVTable' => [
          'version' => '1.0.8-beta',
          'service_url' => 'modstore.pro',
      ],
@@ -49,40 +48,33 @@ $packages = [
         'version' => '2.0.2-beta',
         'service_url' => 'modstore.pro',
     ],
-    'Google Maps TV' => [
-        'version' => '1.1.0-pl',
-        'service_url' => 'modx.com',
-    ],
     'ClientConfig' => [
         'version' => '2.1.0-pl',
         'service_url' => 'modx.com',
     ],
     'FormIt' => [
-        'version' => '4.2.3-pl',
+        'version' => '4.2.7-pl',
         'service_url' => 'modx.com',
         'author' => 'sterc'
     ],
     'MIGX' => [
-        'version' => '2.12.0-pl',
+        'version' => '2.13.0-pl',
         'service_url' => 'modx.com',
         'author' => 'Bruno17',
     ],
     'TinyMCE Rich Text Editor' => [
-        'version' => '1.2.1-pl',
+        'version' => '2.0.7-pl',
         'service_url' => 'modx.com',
     ],
     'translit' => [
         'version' => '1.0.0-beta',
         'service_url' => 'modx.com',
     ],
-    'SEO Pro' => [
-        'version' => '1.3.0-pl',
+    'SEO Suite' => [
+        'version' => '2.0.6-pl',
         'service_url' => 'modx.com',
+        'author' => 'sterc'
     ],
-    'SEO Tab' => [
-        'version' => '2.2.0-pl',
-        'service_url' => 'modx.com',
-    ]
 ];
 
 $downloadPackage = function ($src, $dst) {

@@ -1,5 +1,5 @@
 <?php
-// Меняем контент главного шаблона
+
 if ($object->xpdo) {
 	/** @var modX $modx */
 	$modx =& $object->xpdo;

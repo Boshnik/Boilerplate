@@ -1,5 +1,5 @@
 <?php
-// Переименовываются файлы ht.access в корне и в папке /core/ (чтобы заработали дружественные URL)
+
 if ($object->xpdo) {
     /** @var modX $modx */
     $modx =& $object->xpdo;
@@ -16,10 +16,6 @@ if ($object->xpdo) {
                 $log = false;
                 if (!file_exists($new_inroot)) {
                     rename($inroot, $new_inroot);
-                    
-                    // Добавляем кеширование
-                    //$current = file_get_contents($modx->getOption('core_path') . 'components/modtheme/elements/htaccess.tpl');
-                    //if( $current !== false ) file_put_contents($new_inroot, $current, FILE_APPEND);
                     
                     $log = true;
                 }

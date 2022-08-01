@@ -1,5 +1,4 @@
 <?php
-// Устанавливаем системные настройки
 if ($object->xpdo) {
     /** @var modX $modx */
     $modx =& $object->xpdo;
@@ -27,7 +26,7 @@ if ($object->xpdo) {
                 'friendly_urls_strict' => true,
                 'publish_default' => true,
                 'use_alias_path' => true,
-                'friendly_alias_translit' => 'rusandlat',
+                'friendly_alias_translit' => 'russian',
                 'resource_tree_node_name' => 'menutitle',
                 'resource_tree_node_tooltip' => 'alias',
                 'unauthorized_page' => $errors['403'],
@@ -38,7 +37,7 @@ if ($object->xpdo) {
                 'pdotools_fenom_default' => true,
                 'pdotools_fenom_modx' => true,
                 'pdotools_fenom_parser' => true,
-                'pdotools_elements_path' => '{core_path}/',
+                'pdotools_elements_path' => '{core_path}/elements/',
                 'request_method_strict' => true,
                 'log_deprecated' => false,
                 'tinycompressor_tinypng_upload_enable' => true,

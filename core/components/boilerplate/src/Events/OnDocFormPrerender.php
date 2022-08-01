@@ -1,76 +1,61 @@
 <?php
-/*  
-    https://github.com/tanaevr/BreadCrumbsManager
-    ppb_managerBreadCrumbs for modx 2.3.x
-    Version: 0.1
-    
-    original plugincode written by @argnisto  
-    frankensteined by info@pepebe.
-    Description: The plugin adds a breadcrumb navigation below the pagetitle 
-    for easier navigation/orientation.
-    
-    Note: Most of the code was shamelessly frankensteined from modDevTools by argnist.
-    modDevTools can be installed by modx package manager. Try it, its a very useful plugin.
-    The complete code for moddevtools is hosted on github: https://github.com/argnist/modDevTools
-    
-    If you want to have breadcrumbs, but you don't need the rest of modDevTools, 
-    this will do the job.
-    
-    Usage: Copy code into a new plugin (ppb_managerBreadCrumbs) and set it to OnDocFormPrerender. Done.
-    
-    2do:
-    Rewrite the whole thing and get rid of stuff we don't need.
-    
-*/
-$limit = 3;
-if($modx->event->name != 'OnDocFormPrerender') return;
 
-$config = array();
-function getBreadCrumbs($resource,$modx,$limit) {
-        if (($modx === modSystemEvent::MODE_NEW) || !$resource) {
-            if (!isset($_GET['parent'])) {return;}
-            if (!$resource) {return;}
+namespace Boshnik\Boilerplate\Events;
+
+/**
+ * class OnDocFormPrerender
+ */
+class OnDocFormPrerender extends Event
+{
+    public function run()
+    {
+        $limit = 3;
+        $config = [];
+
+        /** @var \modxResource $resource */
+        $resource = $this->scriptProperties['resource'];
+        if (!$resource || !isset($_GET['parent'])) {
+            return true;
         }
-        
+
         $context = $resource->get('context_key');
         if ($context != 'web') {
-            $modx->reloadContext($context);
+            $this->modx->reloadContext($context);
         }
-        
-        $resources = $modx->getParentIds($resource->get('id'), $limit, array( 'context' => $context ));
-        
-        if ($modx === modSystemEvent::MODE_NEW) {
+
+        $resources = $this->modx->getParentIds($resource->get('id'), $limit, ['context' => $context]);
+
+        if ($this->modx === modSystemEvent::MODE_NEW) {
             array_unshift($resources, $_GET['parent']);
         }
         $crumbs = array();
-        $root = $modx->toJSON(array(
+        $root = $this->modx->toJSON(array(
             'text' => $context,
             'className' => 'first',
             'root' => true,
             'url' => '?'
         ));
-        $controllerConfig = $modx->controller->config;
+        $controllerConfig = $this->modx->controller->config;
         $action = $controllerConfig['controller'];
         if ($action == 'resource/create') {
             $action = 'resource/update';
         }
         if (isset($controllerConfig['id'])) {
             if ($controllerConfig['controller'] == 'resource/create') {
-                $actionObj = $modx->getObject('modAction', array('controller' => 'resource/update'));
+                $actionObj = $this->modx->getObject('modAction', ['controller' => 'resource/update']);
                 $action = $actionObj->get('id');
             } else {
                 $action = $controllerConfig['id'];
             }
         }
-        
-        
+
         $isAll = false;
         for ($i = count($resources)-1; $i >= 0; $i--) {
             $resId = $resources[$i];
             if ($resId == 0) {
                 continue;
             }
-            $parent = $modx->getObject('modResource', $resId);
+            $parent = $this->modx->getObject('modResource', $resId);
             if (!$parent) {break;}
             if ($parent->get('parent') == 0) {
                 $isAll = true;
@@ -80,22 +65,22 @@ function getBreadCrumbs($resource,$modx,$limit) {
                 'url' => '?a=' . $action . '&id=' . $parent->get('id')
             );
         }
-        
-        
+
+
         if ((count($resources) == $limit) && !$isAll) {
             array_unshift($crumbs, array(
                 'text' => '...',
             ));
         }
         // Add pagetitle of current page
-        if ($modx === modSystemEvent::MODE_NEW) {
-            $pagetitle = $modx->lexicon('new_document');
+        if ($this->modx === modSystemEvent::MODE_NEW) {
+            $pagetitle = $this->modx->lexicon('new_document');
         } else {
             $pagetitle = $resource->get('pagetitle');
         }
         $crumbs[] = array('text' => $pagetitle);
-        $crumbs = $modx->toJSON($crumbs);
-        
+        $crumbs = $this->modx->toJSON($crumbs);
+
         $tpl = "
             <script id='managerBreadCrumbs_tpl' type='text' data-plugin='managerBreadCrumbs'>
                 <tpl if=\"typeof(trail) != 'undefined'\">
@@ -120,10 +105,10 @@ function getBreadCrumbs($resource,$modx,$limit) {
                 </tpl>
             </script>
         ";
-        
-        $modx->controller->addHtml($tpl);
+
+        $this->modx->controller->addHtml($tpl);
         $panel = "
-            <script type='text/javascript' data-plugin='managerBreadCrumbs'>
+            <script data-plugin='managerBreadCrumbs'>
             var modDevTools = function(config) {
                 config = config || {};
                 modDevTools.superclass.constructor.call(this,config);
@@ -192,7 +177,7 @@ function getBreadCrumbs($resource,$modx,$limit) {
                 });
                 header.doLayout();
                 var crumbCmp = Ext.getCmp('resource-breadcrumbs');
-                var bd = { trail : {$crumbs}};
+                var bd = { trail : {$crumbs} };
                 crumbCmp.updateDetail(bd);
                 Ext.getCmp('modx-resource-pagetitle').on('keyup', function(){
                     bd.trail[bd.trail.length-1] = {text: crumbCmp.getPagetitle()};
@@ -200,8 +185,8 @@ function getBreadCrumbs($resource,$modx,$limit) {
                 });
             });
             </script>";
-        
-        $modx->controller->addHtml($panel);
+
+        $this->modx->controller->addHtml($panel);
+        return;
     }
-getBreadCrumbs($resource,$modx,$limit);
-return;
+}

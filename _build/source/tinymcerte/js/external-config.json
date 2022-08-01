@@ -26,7 +26,7 @@
 			"text": "C++", "value": "cpp"
 	}]
 ,
-	"spellchecker_languages": "Russian=ru,Latvain=lv,English=en",
+	"spellchecker_languages": "Russian=ru,English=en",
 	"spellchecker_language": "ru",
 	"spellchecker_rpc_url": "//speller.yandex.net/services/tinyspell"
 }

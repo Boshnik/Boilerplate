@@ -1,5 +1,5 @@
 <?php
-// Установка HTTP заголовков
+
 if ($object->xpdo) {
     /** @var modX $modx */
     $modx =& $object->xpdo;

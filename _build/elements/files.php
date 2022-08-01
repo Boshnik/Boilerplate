@@ -1,5 +1,5 @@
 <?php
-// Копируем статические файлы
+
 return [
     'robots.txt' => [
         'source' => $this->config['root'] . '_build/source/robots.txt',
