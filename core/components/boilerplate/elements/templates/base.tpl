@@ -12,7 +12,7 @@
 >
 <head>
     {block 'head'}
-        {include 'head'}
+        {insert 'file:chunks/head.tpl'}
     {/block}
 
     <link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -21,13 +21,36 @@
     <script src="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
-    
-    {* CONTENT *}
+
+    {block 'header'}
+        {insert 'file:chunks/header.tpl'}
+    {/block}
+
     {block 'content'}
-        {include 'header'}
-        {include 'breadcrumbs'}
-        {include 'content'}
-        {include 'footer'}
+        {insert 'file:chunks/breadcrumbs.tpl'}
+        {set $pageblocks = '!pdoResources' | snippet: [
+            'loadModels' => 'PageBlocks',
+            'class' => 'pbBlockValue',
+            'sortby' => 'colrank',
+            'sortdir' => 'asc',
+            'limit' => 0,
+            'where' => [
+                'resource_id' => $_modx->resource.id,
+                'published' => 1,
+                'deleted' => 0,
+            ],
+            'return' => 'json'
+        ] | fromJSON}
+
+        {foreach $pageblocks as $idx => $row}
+            {set $row.values['block_id'] = $row.id}
+            {set $row.values['idx'] = $idx}
+            {$_modx->getChunk('@FILE chunks/'~$row.chunk~'.tpl', $row.values)}
+        {/foreach}
+    {/block}
+
+    {block 'footer'}
+        {insert 'file:chunks/footer.tpl'}
     {/block}
 
     {if $_modx->user.id == 1}

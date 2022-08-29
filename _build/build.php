@@ -405,11 +405,11 @@ class BoilerplatePackage
             $objects[$name]->fromArray(array_merge([
                 'templatename' => $name,
                 'description' => $data['description'],
-                'content' => $this::_getContent($this->config['core'] . 'elements/templates/' . $data['file'] . '.tpl'),
+                'content' => '{insert "file:templates/' . $data['file'] . '.tpl"}',
                 'static' => !empty($this->config['static']['templates']),
                 'source' => 0,
                 'category' => 0,
-                'static_file' => 'core/components/' . $this->config['name_lower'] . '/elements/templates/' . $data['file'] . '.tpl',
+                'static_file' => 'core/elements/templates' . $data['file'] . '.tpl',
             ], $data), '', true, true);
 
             $this->listElements['templates'][] = $name;

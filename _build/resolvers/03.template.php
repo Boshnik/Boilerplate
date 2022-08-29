@@ -3,20 +3,14 @@
 if ($object->xpdo) {
 	/** @var modX $modx */
 	$modx =& $object->xpdo;
-	
-	$baseTpl = MODX_CORE_PATH . '/components/boilerplate/elements/templates/base.tpl';
-	$baseTplContent = '';
-    if (file_exists($baseTpl)) {
-        $baseTplContent = trim(file_get_contents($baseTpl));
-    }
-	
+
     switch ($options[xPDOTransport::PACKAGE_ACTION]) {
 		case xPDOTransport::ACTION_INSTALL:
 			foreach ($modx->getCollection('modTemplate') as $template) {
                 
-                if( $template->id == 1 || $template->templatename == 'Начальный шаблон') {
+                if ($template->id == 1) {
                     $template->set('templatename', 'BaseTemplate');
-                    $template->set('content', $baseTplContent);
+                    $template->set('content', '{insert "file:templates/base.tpl"}');
                 }
 
                 $template->set('category', 0);

@@ -13,10 +13,6 @@ return [
         'file' => 'breadcrumbs',
         'description' => '',
     ],
-    'content' => [
-        'file' => 'content',
-        'description' => '',
-    ],
     'footer' => [
         'file' => 'footer',
         'description' => '',

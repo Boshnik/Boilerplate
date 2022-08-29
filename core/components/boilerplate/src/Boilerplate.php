@@ -40,4 +40,6 @@ class Boilerplate
         $this->modx->addPackage('boilerplate', $this->config['modelPath']);
         $this->modx->lexicon->load('boilerplate:default');
     }
+
+
 }

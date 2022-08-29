@@ -9,8 +9,8 @@ class OnMODXInit extends Event
 {
     public function run()
     {
-        if (!isset($_SESSION['csrf-token'])) {
-            $_SESSION['csrf-token'] = bin2hex(openssl_random_pseudo_bytes(16));
+        if (!isset($_SESSION['csrf_token'])) {
+            $_SESSION['csrf_token'] = bin2hex(openssl_random_pseudo_bytes(16));
         }
 
         if ($this->modx->context->key != 'mgr' && $this->modx->getOption('friendly_urls')) {

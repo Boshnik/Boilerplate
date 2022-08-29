@@ -1,4 +1,4 @@
-{extends 'template:BaseTemplate'}
+{extends 'file:templates/base.tpl'}
 
 {block 'content'}
    {if $_modx->resource.content?}

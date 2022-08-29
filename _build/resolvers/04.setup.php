@@ -32,20 +32,16 @@ $packages = [
         'version' => '2.13.2-pl',
         'service_url' => 'modstore.pro',
     ],
-    'phpThumbOn' => [
-        'version' => '1.3.5-beta2',
-        'service_url' => 'modstore.pro',
+    'pThumb' => [
+        'version' => '2.3.3-pl',
+        'service_url' => 'modx.com',
     ],
     'SocialNetworks' => [
         'vesrion' => '1.0.4-pl',
         'service_url' => 'modstore.pro',
     ],
     'TVTable' => [
-         'version' => '1.0.8-beta',
-         'service_url' => 'modstore.pro',
-     ],
-    'tinyCompressor' => [
-        'version' => '2.0.2-beta',
+        'version' => '1.0.8-beta',
         'service_url' => 'modstore.pro',
     ],
     'ClientConfig' => [
@@ -56,11 +52,6 @@ $packages = [
         'version' => '4.2.7-pl',
         'service_url' => 'modx.com',
         'author' => 'sterc'
-    ],
-    'MIGX' => [
-        'version' => '2.13.0-pl',
-        'service_url' => 'modx.com',
-        'author' => 'Bruno17',
     ],
     'TinyMCE Rich Text Editor' => [
         'version' => '2.0.7-pl',
