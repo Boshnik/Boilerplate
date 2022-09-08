@@ -8,7 +8,6 @@ return [
             'OnMODXInit' => [],
             'OnManagerPageInit' => [],
             'OnWebPagePrerender' => [],
-            'OnDocFormPrerender' => [],
             'OnFileManagerUpload' => [],
         ],
     ],
