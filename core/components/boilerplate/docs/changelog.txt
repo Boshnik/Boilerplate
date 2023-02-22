@@ -1,8 +1,14 @@
 Список изменений
 
+1.2.6-pl (22.02.2022)
+==============
+ - Добавлен сниппет hashFile
+ - Добавлен заголовок Content-Security-Policy (*.googleapis.com *.gstatic.com *.googletagmanager.com *.jsdelivr.net)
+
 1.2.5-pl (14.09.2022)
 ==============
  - Исправлена карта сайта
+ - Добавлен ModxMinify вместо MinifyX
 
 1.2.4-pl (08.09.2022)
 ==============

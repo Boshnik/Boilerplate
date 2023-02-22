@@ -24,25 +24,21 @@ $packages = [
         'version' => '1.3.0-pl',
         'service_url' => 'modstore.pro',
     ],
-    'MinifyX' => [
-        'version' => '1.7.1-pl',
-        'service_url' => 'modstore.pro',
-    ],
     'pdoTools' => [
         'version' => '2.13.2-pl',
         'service_url' => 'modstore.pro',
-    ],
-    'pThumb' => [
-        'version' => '2.3.3-pl',
-        'service_url' => 'modx.com',
     ],
     'SocialNetworks' => [
         'vesrion' => '1.0.4-pl',
         'service_url' => 'modstore.pro',
     ],
-    'TVTable' => [
-        'version' => '1.0.8-beta',
-        'service_url' => 'modstore.pro',
+    'ModxMinify' => [
+        'version' => '1.0.2-pl',
+        'service_url' => 'modx.com',
+    ],
+    'pThumb' => [
+        'version' => '2.3.3-pl',
+        'service_url' => 'modx.com',
     ],
     'ClientConfig' => [
         'version' => '2.1.0-pl',

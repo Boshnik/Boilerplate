@@ -14,7 +14,8 @@ if ($object->xpdo) {
                     'X-XSS-Protection:1;mode=block',
                     'X-Content-Type-Options:nosniff',
                     'Referrer-Policy:no-referrer',
-                    'Cache-Control: max-age=31536000, must-revalidate'
+                    'Cache-Control: max-age=31536000, must-revalidate',
+                    "Content-Security-Policy: default-src 'self' *.googleapis.com *.gstatic.com *.googletagmanager.com *.jsdelivr.net;"
                 ]);
                 $object->save();
             }

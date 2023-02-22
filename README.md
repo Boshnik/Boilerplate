@@ -114,11 +114,12 @@
     - X-Content-Type-Options:nosniff
     - Referrer-Policy:no-referrer
     - Cache-Control: max-age=31536000, must-revalidate
+    - Content-Security-Policy: default-src 'self' *.googleapis.com *.gstatic.com *.googletagmanager.com *.jsdelivr.net;
  - Удаляется файл changelog.txt, чтобы убрать сообщение о том, что безопасность сайта не в порядке
  - Ппереименовываются файлы ht.access в корне и в папке /core/, чтобы заработали дружественные URL
  - Меняем контент главного шаблона
     
     
-## TODO
- - https://netpeak.net/ru/blog/kak-rasshirit-predstavlenie-sayta-v-vydache-s-pomoshchyu-google-tag-manager/?spush=c3vwzxjib3nobmlrqhlhbmrlec5ydq==    
+## TODO    
  - https://modx.pro/development/13157
+ - https://github.com/GoogleChromeLabs/quicklink

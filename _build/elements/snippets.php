@@ -8,5 +8,9 @@ return [
     'babelGetId' => [
         'file' => 'babelgetid',
         'description' => '',
+    ],
+    'hashFile' => [
+        'file' => 'hashfile',
+        'description' => '',
     ]
 ];

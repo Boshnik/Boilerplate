@@ -1,6 +1,8 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 
+set_time_limit(0);
+
 class BoilerplatePackage
 {
     /** @var modX $modx */
@@ -20,7 +22,7 @@ class BoilerplatePackage
     );
 
     protected $_idx = 1;
-    
+
     /**
      * BoilerplatePackage constructor.
      *
@@ -36,7 +38,7 @@ class BoilerplatePackage
         $this->modx->initialize('mgr');
         $this->modx->getService('error', 'error.modError');
 
-        $root = dirname(dirname(__FILE__)) . '/';
+        $root = dirname(__FILE__, 2) . '/';
         $assets = $root . 'assets/components/' . $config['name_lower'] . '/';
         $core = $root . 'core/components/' . $config['name_lower'] . '/';
 
@@ -56,7 +58,7 @@ class BoilerplatePackage
         $this->modx->setLogTarget($this->config['log_target']);
 
         $this->initialize();
-        
+
         $packages = include($this->config['elements'] . 'packages.php');
         foreach($packages as $name => $pack){
             $this->listElements['packages'][] = $name;
@@ -107,7 +109,7 @@ class BoilerplatePackage
         ];
         foreach ($settings as $name => $data) {
             /** @var modSystemSetting $setting */
-            $setting = $this->modx->newObject('modSystemSetting');
+            $setting = $this->modx->newObject(modSystemSetting::class);
             $setting->fromArray(array_merge([
                 'key' => $name,
                 'namespace' => $this->config['name_lower'],
@@ -140,7 +142,7 @@ class BoilerplatePackage
         if (is_array($menus)) {
             foreach ($menus as $name => $data) {
                 /** @var modMenu $menu */
-                $menu = $this->modx->newObject('modMenu');
+                $menu = $this->modx->newObject(modMenu::class);
                 $menu->fromArray(array_merge([
                     'text' => $name,
                     'parent' => 'components',
@@ -177,7 +179,7 @@ class BoilerplatePackage
         ];
         foreach ($widgets as $name => $data) {
             /** @var modDashboardWidget $widget */
-            $widget = $this->modx->newObject('modDashboardWidget');
+            $widget = $this->modx->newObject(modDashboardWidget::class);
             $widget->fromArray(array_merge([
                 'name' => $name,
                 'namespace' => 'core',
@@ -262,7 +264,7 @@ class BoilerplatePackage
         $objects = [];
         foreach ($plugins as $name => $data) {
             /** @var modPlugin $plugin */
-            $plugin = $this->modx->newObject('modPlugin');
+            $plugin = $this->modx->newObject(modPlugin::class);
             $plugin->fromArray(array_merge([
                 'name' => $name,
                 'category' => 0,
@@ -277,7 +279,7 @@ class BoilerplatePackage
             if (!empty($data['events'])) {
                 foreach ($data['events'] as $event_name => $event_data) {
                     /** @var modPluginEvent $event */
-                    $event = $this->modx->newObject('modPluginEvent');
+                    $event = $this->modx->newObject(modPluginEvent::class);
                     $event->fromArray(array_merge([
                         'event' => $event_name,
                         'priority' => 0,
@@ -316,7 +318,7 @@ class BoilerplatePackage
         $objects = [];
         foreach ($snippets as $name => $data) {
             /** @var modSnippet[] $objects */
-            $objects[$name] = $this->modx->newObject('modSnippet');
+            $objects[$name] = $this->modx->newObject(modSnippet::class);
             $objects[$name]->fromArray(array_merge([
                 'id' => 0,
                 'name' => $name,
@@ -360,7 +362,7 @@ class BoilerplatePackage
         $objects = [];
         foreach ($chunks as $name => $data) {
             /** @var modChunk[] $objects */
-            $objects[$name] = $this->modx->newObject('modChunk');
+            $objects[$name] = $this->modx->newObject(modChunk::class);
             $objects[$name]->fromArray(array_merge([
                 'id' => 0,
                 'name' => $name,
@@ -401,7 +403,7 @@ class BoilerplatePackage
         $objects = [];
         foreach ($templates as $name => $data) {
             /** @var modTemplate[] $objects */
-            $objects[$name] = $this->modx->newObject('modTemplate');
+            $objects[$name] = $this->modx->newObject(modTemplate::class);
             $objects[$name]->fromArray(array_merge([
                 'templatename' => $name,
                 'description' => $data['description'],
@@ -449,7 +451,7 @@ class BoilerplatePackage
     {
         $file = $data['context_key'] . '/' . $uri;
         /** @var modResource $resource */
-        $resource = $this->modx->newObject('modResource');
+        $resource = $this->modx->newObject(modResource::class);
         $resource->fromArray(array_merge([
             'parent' => $parent,
             'published' => true,
@@ -529,7 +531,11 @@ class BoilerplatePackage
             $package->save();
         }
         if ($package->install()) {
-            $this->modx->runProcessor('system/clearcache');
+            $action = 'system/clearcache';
+            if ($this->modx->getVersionData()['version'] === 3) {
+                $action = 'System/ClearCache';
+            }
+            $this->modx->runProcessor($action);
         }
     }
 
@@ -555,10 +561,9 @@ class BoilerplatePackage
         // Create main vehicle
         /** @var modTransportVehicle $vehicle */
         $vehicle = $this->builder->createVehicle($this->category, $this->category_attributes);
-        
+
         /** @noinspection PhpIncludeInspection */
         $files = include($this->config['elements'] . 'files.php');
-        
         if(!empty($files) && is_array($files)) {
             foreach($files as $file) {
                 $vehicle->resolve('file', [
@@ -592,6 +597,7 @@ class BoilerplatePackage
         }
         $this->builder->putVehicle($vehicle);
 
+        $this->modx->log(modX::LOG_LEVEL_INFO, 'Adding documentation...');
         $this->builder->setPackageAttributes([
             'changelog' => file_get_contents($this->config['core'] . 'docs/changelog.txt'),
             'license' => file_get_contents($this->config['core'] . 'docs/license.txt'),
@@ -603,8 +609,8 @@ class BoilerplatePackage
                 'source' => $this->config['build'] . 'setup.options.php',
             ),
         ]);
-        $this->modx->log(modX::LOG_LEVEL_INFO, 'Added package attributes and setup options.');
 
+        /* zip up package */
         $this->modx->log(modX::LOG_LEVEL_INFO, 'Packing up transport package zip...');
         $this->builder->pack();
 
