@@ -8,14 +8,13 @@ if ($object->xpdo) {
         case xPDOTransport::ACTION_INSTALL:
         case xPDOTransport::ACTION_UPGRADE:
             
-            if ($object = $modx->getObject('modContentType', ['name'=>'HTML'])){
+            if ($object = $modx->getObject(modContentType::class, ['name'=>'HTML'])){
                 $object->set('headers', [
                     'X-Frame-Options:deny',
                     'X-XSS-Protection:1;mode=block',
                     'X-Content-Type-Options:nosniff',
                     'Referrer-Policy:no-referrer',
                     'Cache-Control: max-age=31536000, must-revalidate',
-                    "Content-Security-Policy: default-src 'self' *.googleapis.com *.gstatic.com *.googletagmanager.com *.jsdelivr.net;"
                 ]);
                 $object->save();
             }

@@ -16,6 +16,20 @@ class OnMODXInit extends Event
         if ($this->modx->context->key != 'mgr' && $this->modx->getOption('friendly_urls')) {
             $this->changeContext();
         }
+
+        // https://content-security-policy.com/nonce/
+        if ($this->modx->context->key != 'mgr') {
+            $header = $this->modx->getObject('modSystemSetting', ['key' => 'boilerplate_csp']);
+            if (empty($header->get('value'))) {
+                unset($_SESSION['csp_nonce']);
+            } else {
+                $nonce = bin2hex(openssl_random_pseudo_bytes(6));
+                $header = preg_replace('(nonce-.{12})', "nonce-$nonce", $header->get('value'));
+                if ($this->modx->context->key)
+                    header($header);
+                $_SESSION['csp_nonce'] = $nonce;
+            }
+        }
     }
 
     public function changeContext()

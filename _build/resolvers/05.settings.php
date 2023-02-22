@@ -47,7 +47,7 @@ if ($object->xpdo) {
             ];
             foreach ($settings as $key => $value) {
                 /** @var modSystemSetting $setting */
-                if ($setting = $modx->getObject('modSystemSetting', ['key' => $key])) {
+                if ($setting = $modx->getObject(modSystemSetting::class, ['key' => $key])) {
                     $setting->set('value', $value);
                     $setting->save();
                 }
