@@ -1,9 +1,10 @@
 Список изменений
 
-1.2.6-pl (22.02.2022)
+1.2.6-pl (24.02.2022)
 ==============
  - Добавлен сниппет hashFile
- - Добавлен заголовок Content-Security-Policy (*.googleapis.com *.gstatic.com *.googletagmanager.com *.jsdelivr.net)
+ - Добавлен заголовок Content-Security-Policy
+ - Добавлена системная настройка boilerplate_menu_description
 
 1.2.5-pl (14.09.2022)
 ==============

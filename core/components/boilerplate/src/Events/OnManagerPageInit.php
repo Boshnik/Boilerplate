@@ -10,14 +10,20 @@ class OnManagerPageInit extends Event
     public function run()
     {
         $managerCss = 'components/boilerplate/css/mgr/manager.css';
-        if(file_exists(MODX_ASSETS_PATH . $managerCss)) {
+        if (file_exists(MODX_ASSETS_PATH . $managerCss)) {
             $this->modx->regClientCSS('/assets/'.$managerCss);
         }
 
         // Hide vertical tab for tv
-        $hideVTabsCss = 'components/boilerplate/css/mgr/hidevtabs.css';
-        if($this->modx->getOption('boilerplate_hide_vtabs_tv') && file_exists(MODX_ASSETS_PATH . $hideVTabsCss)) {
-            $this->modx->regClientCSS('/assets/'.$hideVTabsCss);
+        $tabs = $this->modx->getObject(\modSystemSetting::class, ['key' => 'boilerplate_hide_vtabs_tv']);
+        if ($tabs && $tabs->value) {
+            $this->modx->regClientCSS('<style>#modx-resource-vtabs-header {display: none !important;}</style>');
+        }
+
+        // Hide component descriptions in the menu
+        $menu = $this->modx->getObject(\modSystemSetting::class, ['key' => 'boilerplate_menu_description']);
+        if ($menu && $menu->value) {
+            $this->modx->regClientCSS('<style>#modx-navbar #limenu-components ul.modx-subnav li a span {display: none}</style>');
         }
     }
 }
