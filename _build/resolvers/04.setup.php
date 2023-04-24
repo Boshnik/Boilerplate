@@ -113,9 +113,8 @@ $installPackage = function ($packageName, $options = []) use ($modx, $downloadPa
 
     if (!empty($response)) {
         $foundPackages = simplexml_load_string($response->response);
-        
-        // print_r($foundPackages);
-        $author = count($foundPackages) - 1;
+
+        $author = is_countable($foundPackages) ? (count($foundPackages) - 1) : 0;
         
         foreach ($foundPackages as $foundPackage) {
             /** @var modTransportPackage $foundPackage */
@@ -125,13 +124,12 @@ $installPackage = function ($packageName, $options = []) use ($modx, $downloadPa
                 $versionSignature = explode('.', $sig[1]);
                 /** @noinspection PhpUndefinedFieldInspection */
                 $url = $foundPackage->location;
-                
-                // Если нашли более 1 пакета, то фильтруем их по автору, если он указан
-                if( $author && !empty($options['author']) && $foundPackage->author != $options['author'] ) {
+
+                if ($author && !empty($options['author']) && $foundPackage->author != $options['author'] ) {
                     continue;
                 }
                 
-                // Качаем компонент
+                // Download package
                 if (!$downloadPackage($url, $modx->getOption('core_path') . 'packages/' . $foundPackage->signature . '.transport.zip')) {
                     return [
                         'success' => 0,
