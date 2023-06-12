@@ -13,12 +13,12 @@ class OnMODXInit extends Event
             $_SESSION['csrf_token'] = bin2hex(openssl_random_pseudo_bytes(16));
         }
 
-        if ($this->modx->context->key != 'mgr' && $this->modx->getOption('friendly_urls')) {
+        if ($this->modx->context->key !== 'mgr' && $this->modx->getOption('friendly_urls')) {
             $this->changeContext();
         }
 
         // https://content-security-policy.com/nonce/
-        if ($this->modx->context->key != 'mgr') {
+        if ($this->modx->context->key !== 'mgr') {
             $header = $this->modx->getObject('modSystemSetting', ['key' => 'boilerplate_csp']);
             if (empty($header->get('value'))) {
                 unset($_SESSION['csp_nonce']);

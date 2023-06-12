@@ -1,9 +1,10 @@
 {set $site_name = 'site_name' | config}
 {set $site_url = 'site_url' | config}
+{set $locale = $_modx->config.locale|split:'.'}
 
 <!DOCTYPE html>
 <html
-    lang="en-US"
+    lang="{$locale[0]}"
     dir="ltr"
     itemscope
     itemtype="https://schema.org/WebPage"
@@ -41,10 +42,10 @@
     {if $_modx->user.id == 1}
         <script>
             function Info(totalTime, queries, memory, source) {
-                this['Время запросов:'] = totalTime;
-                this['Количество запросов:'] = queries;
-                this['Используемая память:'] = memory;
-                this['Источник:'] = source;
+                this['Request times:'] = totalTime;
+                this['Number of requests:'] = queries;
+                this['Used memory:'] = memory;
+                this['Source:'] = source;
             }
 
             {set $info = $_modx->getInfo('', false)}

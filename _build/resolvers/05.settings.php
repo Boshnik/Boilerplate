@@ -8,13 +8,13 @@ if ($object->xpdo) {
         case xPDOTransport::ACTION_UPGRADE:
             
             $errors = [
-                '403' => 3, // Страница ошибки 403 «Доступ запрещен»
-                '404' => 4, // Страница ошибки 404 «Документ не найден» (404 ошибка)
-                '503' => 5  // Страница «Сайт недоступен»
+                '403' => 3, // Error page 403 "Access denied"
+                '404' => 4, // Error page 404 "Document not found"
+                '503' => 5  // Site Not Available Page
             ];
 
-            foreach($errors as $name => $id) {
-                if($res = $modx->getObject('modResource', array('alias' => $name)) ) {
+            foreach ($errors as $name => $id) {
+                if ($res = $modx->getObject(modResource::class, ['alias' => $name]) ) {
                     $errors[$name] = $res->get('id');
                 }   
             }
@@ -27,13 +27,13 @@ if ($object->xpdo) {
                 'publish_default' => true,
                 'use_alias_path' => true,
                 'friendly_alias_translit' => 'russian',
-                'resource_tree_node_name' => 'menutitle',
+//                'resource_tree_node_name' => 'menutitle',
                 'resource_tree_node_tooltip' => 'alias',
                 'unauthorized_page' => $errors['403'],
                 'error_page' => $errors['404'],
                 'site_unavailable_page' => $errors['503'],
                 'error_page_header' => 'HTTP/1.0 404 Not Found',
-                'locale' => 'ru_RU.utf8',
+                'locale' => 'en_US.utf8',
                 'pdotools_fenom_default' => true,
                 'pdotools_fenom_modx' => true,
                 'pdotools_fenom_parser' => true,

@@ -2,12 +2,16 @@
 /** @var xPDOTransport $transport */
 /** @var array $options */
 /** @var modX $modx */
-if (!$transport->xpdo || !($transport instanceof xPDOTransport)) {
+if (!$transport->xpdo) {
     return false;
 }
 
 $modx =& $transport->xpdo;
 $packages = [
+//    'Guzzle7' => [
+//        'version' => '7.3.1-pl',
+//        'service_url' => 'modx.com',
+//    ],
     'Ace' => [
         'version' => '1.8.0-pl',
         'service_url' => 'modstore.pro',
@@ -112,14 +116,19 @@ $installPackage = function ($packageName, $options = []) use ($modx, $downloadPa
     ]);
 
     if (!empty($response)) {
-        $foundPackages = simplexml_load_string($response->response);
+
+        if ($modx->version['version'] == 3) {
+            $foundPackages = simplexml_load_string($response->getBody()->getContents());
+        } else {
+            $foundPackages = simplexml_load_string($response->response);
+        }
 
         $author = is_countable($foundPackages) ? (count($foundPackages) - 1) : 0;
         
         foreach ($foundPackages as $foundPackage) {
             /** @var modTransportPackage $foundPackage */
             /** @noinspection PhpUndefinedFieldInspection */
-            if ($foundPackage->name == $packageName) {
+            if ((string)$foundPackage->name == $packageName) {
                 $sig = explode('-', $foundPackage->signature);
                 $versionSignature = explode('.', $sig[1]);
                 /** @noinspection PhpUndefinedFieldInspection */
@@ -193,7 +202,7 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
     case xPDOTransport::ACTION_INSTALL:
     case xPDOTransport::ACTION_UPGRADE:
         if (is_array($options['update_packages'])) {
-            foreach($options['update_packages'] as $name) {
+            foreach ($options['update_packages'] as $name) {
                 $data = $packages[$name];
                 $installed = $modx->getIterator('transport.modTransportPackage', ['package_name' => $name]);
                 /** @var modTransportPackage $package */

@@ -27,6 +27,6 @@ return [
         'name'      => 'setting_boilerplate_csp',
         'area'      => 'default',
         'xtype'     => 'textfield',
-        'value'     => "Content-Security-Policy: script-src 'nonce-rAnd0mrAnd0m'; default-src 'self' *.googleapis.com *.gstatic.com *.googletagmanager.com *.jsdelivr.net;",
+        'value'     => "",
     ],
 ];
