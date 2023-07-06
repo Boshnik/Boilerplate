@@ -17,10 +17,6 @@ class OnWebPagePrerender extends Event
             $content = preg_replace('#\s+#', ' ', $content);
         }
 
-        if (isset($_SESSION['csp_nonce'])) {
-            $content = str_replace('<script', '<script nonce="'. $_SESSION['csp_nonce'] .'"', $content);
-        }
-
         $this->modx->resource->_output = $content;
     }
 }

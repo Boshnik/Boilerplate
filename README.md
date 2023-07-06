@@ -114,7 +114,6 @@
     - X-Content-Type-Options:nosniff
     - Referrer-Policy:no-referrer
     - Cache-Control: max-age=31536000, must-revalidate
-    - Content-Security-Policy: default-src 'self' *.googleapis.com *.gstatic.com *.googletagmanager.com *.jsdelivr.net;
  - Удаляется файл changelog.txt, чтобы убрать сообщение о том, что безопасность сайта не в порядке
  - Ппереименовываются файлы ht.access в корне и в папке /core/, чтобы заработали дружественные URL
  - Меняем контент главного шаблона

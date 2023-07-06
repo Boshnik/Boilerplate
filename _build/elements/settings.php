@@ -22,11 +22,4 @@ return [
         'xtype'     => 'combo-boolean',
         'value'     => 0,
     ],
-    'boilerplate_csp' => [
-        'namespace' => 'boilerplate',
-        'name'      => 'setting_boilerplate_csp',
-        'area'      => 'default',
-        'xtype'     => 'textfield',
-        'value'     => "",
-    ],
 ];
