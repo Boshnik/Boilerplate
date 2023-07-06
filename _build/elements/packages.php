@@ -20,9 +20,9 @@ $packages = [
         'version' => '2.13.2-pl',
         'service_url' => 'modstore.pro',
     ],
-    'ModxMinify' => [
-        'version' => '1.0.2-pl',
-        'service_url' => 'modx.com',
+    'MinifyX' => [
+        'version' => '1.7.1-pl',
+        'service_url' => 'modstore.pro',
     ],
     'SocialNetworks' => [
         'vesrion' => '1.0.4-pl',
