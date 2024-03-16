@@ -74,23 +74,12 @@ $output = '<style>
     }
 </style>';
 if ($templates) {
-    switch ($modx->getOption('manager_language')) {
-        case 'ru':
-            $output .= 'Выберите шаблоны, которые нужно <b>перезаписать</b>:<br/>
-				<small>
-					<a href="#" onclick="Ext.get(\'formCheckboxesTemplate\').select(\'input\').each(function(v) {v.dom.checked = true;});">отметить все</a> |
-					<a href="#" onclick="Ext.get(\'formCheckboxesTemplate\').select(\'input\').each(function(v) {v.dom.checked = false;});">cнять отметки</a>
-				</small>
-			';
-            break;
-        default:
-            $output .= 'Select templates, which need to <b>overwrite</b>:<br/>
+    $output .= 'Select templates, which need to <b>overwrite</b>:<br/>
 				<small>
 					<a href="#" onclick="Ext.get(\'formCheckboxesTemplate\').select(\'input\').each(function(v) {v.dom.checked = true;});">select all</a> |
 					<a href="#" onclick="Ext.get(\'formCheckboxesTemplate\').select(\'input\').each(function(v) {v.dom.checked = false;});">deselect all</a>
 				</small>
 			';
-    }
 
     $output .= $templates;
 }
@@ -98,23 +87,12 @@ if ($chunks) {
     if(!empty($templates)) {
         $output .= '<br/><br/>';    
     }
-    switch ($modx->getOption('manager_language')) {
-        case 'ru':
-            $output .= 'Выберите чпнки, которые нужно <b>перезаписать</b>:<br/>
-				<small>
-					<a href="#" onclick="Ext.get(\'formCheckboxesChunks\').select(\'input\').each(function(v) {v.dom.checked = true;});">отметить все</a> |
-					<a href="#" onclick="Ext.get(\'formCheckboxesChunks\').select(\'input\').each(function(v) {v.dom.checked = false;});">cнять отметки</a>
-				</small>
-			';
-            break;
-        default:
-            $output .= 'Select templates, which need to <b>overwrite</b>:<br/>
+    $output .= 'Select templates, which need to <b>overwrite</b>:<br/>
 				<small>
 					<a href="#" onclick="Ext.get(\'formCheckboxesChunks\').select(\'input\').each(function(v) {v.dom.checked = true;});">select all</a> |
 					<a href="#" onclick="Ext.get(\'formCheckboxesChunks\').select(\'input\').each(function(v) {v.dom.checked = false;});">deselect all</a>
 				</small>
 			';
-    }
 
     $output .= $chunks;
 }
@@ -122,23 +100,12 @@ if ($packages) {
     if(!empty($chunks) || !empty($templates)) {
         $output .= '<br/><br/>';    
     }
-    switch ($modx->getOption('manager_language')) {
-        case 'ru':
-            $output .= 'Выберите приложение, которые необходимо <b>установить</b>:<br/>
-				<small>
-					<a href="#" onclick="Ext.get(\'formCheckboxesPackages\').select(\'input\').each(function(v) {v.dom.checked = true;});">отметить все</a> |
-					<a href="#" onclick="Ext.get(\'formCheckboxesPackages\').select(\'input\').each(function(v) {v.dom.checked = false;});">cнять отметки</a>
-				</small>
-			';
-            break;
-        default:
-            $output .= 'Select package, which need to <b>build</b>:<br/>
+    $output .= 'Select package, which need to <b>build</b>:<br/>
 				<small>
 					<a href="#" onclick="Ext.get(\'formCheckboxesPackages\').select(\'input\').each(function(v) {v.dom.checked = true;});">select all</a> |
 					<a href="#" onclick="Ext.get(\'formCheckboxesPackages\').select(\'input\').each(function(v) {v.dom.checked = false;});">deselect all</a>
 				</small>
 			';
-    }
 
     $output .= $packages;
 }

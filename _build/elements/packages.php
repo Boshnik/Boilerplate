@@ -4,10 +4,6 @@ $packages = [
         'version' => '1.8.0-pl',
         'service_url' => 'modstore.pro',
     ],
-    'AjaxForm' => [
-        'version' => '1.1.9-pl',
-        'service_url' => 'modstore.pro',
-    ],
     'autoRedirector' => [
         'version' => '1.0.2-rc',
         'service_url' => 'modstore.pro',
@@ -20,13 +16,13 @@ $packages = [
         'version' => '2.13.2-pl',
         'service_url' => 'modstore.pro',
     ],
-    'MinifyX' => [
-        'version' => '1.7.1-pl',
-        'service_url' => 'modstore.pro',
-    ],
     'SocialNetworks' => [
         'vesrion' => '1.0.4-pl',
         'service_url' => 'modstore.pro',
+    ],
+    'ModxMinify' => [
+        'version' => '1.0.2-pl',
+        'service_url' => 'modx.com',
     ],
     'pThumb' => [
         'version' => '2.3.3-pl',

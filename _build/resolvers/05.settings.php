@@ -20,27 +20,27 @@ if ($object->xpdo) {
             }
 
             $settings = [
+                // CORE
                 'allow_multiple_emails' => false,
                 'friendly_alias_realtime' => true,
                 'friendly_urls' => true,
                 'friendly_urls_strict' => true,
                 'publish_default' => true,
                 'use_alias_path' => true,
-                'friendly_alias_translit' => 'russian',
-//                'resource_tree_node_name' => 'menutitle',
                 'resource_tree_node_tooltip' => 'alias',
+                'locale' => 'en_US.utf8',
+                'request_method_strict' => true,
                 'unauthorized_page' => $errors['403'],
                 'error_page' => $errors['404'],
-                'site_unavailable_page' => $errors['503'],
                 'error_page_header' => 'HTTP/1.0 404 Not Found',
-                'locale' => 'en_US.utf8',
+                'site_unavailable_page' => $errors['503'],
+                'log_deprecated' => false,
+                // PDOTOOLS
                 'pdotools_fenom_default' => true,
                 'pdotools_fenom_modx' => true,
                 'pdotools_fenom_parser' => true,
                 'pdotools_elements_path' => '{core_path}/elements/',
-                'request_method_strict' => true,
-                'log_deprecated' => false,
-                'tinycompressor_tinypng_upload_enable' => true,
+                // TINYMCERTE
                 'tinymcerte.plugins' => 'advlist autolink lists modximage charmap print preview anchor visualblocks searchreplace code fullscreen insertdatetime media table contextmenu paste modxlink textcolor colorpicker template',
                 'tinymcerte.toolbar1' => 'undo redo | styleselect | backcolor forecolor bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | template',
                 'tinymcerte.external_config' => '{assets_path}components/tinymcerte/js/external-config.json',

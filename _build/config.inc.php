@@ -11,7 +11,7 @@ if (!defined('MODX_CORE_PATH')) {
 return [
     'name' => 'Boilerplate',
     'name_lower' => 'boilerplate',
-    'version' => '1.2.8',
+    'version' => '1.2.9',
     'release' => 'pl',
     // Install package to site right after build
     'install' => true,

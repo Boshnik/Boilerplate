@@ -22,17 +22,13 @@
     {/block}
 
     {block 'content'}
-        {'!PageBlocks'|snippet: [
+        {*'!PageBlocks'|snippet: [
             'fileElements' => 1
-        ]}
+        ]*}
     {/block}
 
     {block 'footer'}
         {insert 'file:chunks/footer.tpl'}
-    {/block}
-
-    {block 'modal'}
-        {insert 'file:chunks/modals.tpl'}
     {/block}
 
     {if $_modx->user.id == 1}

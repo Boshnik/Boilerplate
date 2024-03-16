@@ -1,124 +1,105 @@
 # Boilerplate
-Базовая настройка сайта.
+Basic Website Configuration
 
-### Список устанавливаемых дополнений (при установке опционально)
- - **ClientConfig** (конфигурация сайта)
- - **Google Maps TV** (гугл карта)
- - **FormIt** (обработка форм, отправка заявок на электронную почту)
- - **MIGX** (для создания табличек у ресурсов)
- - **TinyMCE Rich Text Editor** (визуальный редактор)
- - **translit** (автоматическая транслитерация адресов страниц)
- - **SEO Tab** (настройка страницы для поисковых систем)
- - **SEO Pro** (настройка шаблона сайта в поисковой выдачи)
+### List of installable components (optional during installation)
+ - **ClientConfig** (site configuration)
+ - **FormIt** (processing forms, sending requests to e-mail)
+ - **TinyMCE Rich Text Editor** (visual editor)
+ - **translit** (automatic transliteration of page addresses)
+ - **SEO Suite** (page setup for search engines)
 
   **MODSTORE.PRO**
- - **Ace** (лучший редактор кода)
- - **AjaxForm** (отправка форм через Ajax)
- - **autoRedirector** (редирект старых url)
- - **controlErrorLog** (управление журналом ошибок)
- - **MinifyX** (автоматизированное сжатие скриптов и стилей сайта)
- - **mixedImage** (смешанная загрузка файла)
- - **phpThumbOn** (для изменения размера и сжатия изображения)
- - **pdoTools** (быстрая выборка страниц и пользователей сайта)
- - **SocialNetworks** (социальные сети)
- - **tinyCompressor** (автоматическая оптимизация загружаемых файлов)
+ - **Ace** (code editor)
+ - **autoRedirector** (redirect old url)
+ - **controlErrorLog** (error log management)
+ - **ModxMinify** (automated compression of scripts and site styles)
+ - **pThumb** (to resize and compress an image)
+ - **pdoTools** (fast selection of site pages and users)
+ - **SocialNetworks** (social networks)
  
 
-### Ресурсы
- - Главная
- - Сервис
-    - 403 (страница ошибки 403 «Доступ запрещен»)
-    - 404 (страница ошибки 404 «Документ не найден»)
-    - 503 (страница «Сайт недоступен»)
-    - Карта сайта (HTML)
+### Resources
+ - Home
+ - Service pages
+    - 403 (error page 403 "Access Denied")
+    - 404 (error page 404 "Document not found")
+    - 503 (unavailable page)
+    - Site map (HTML)
     - SiteMap (sitemap.xml)
-    - Политика конфиденциальности
+    - Privacy Policy
 
-### Чанки
+### Chunks
  - **head** 
  - **header**
  - **breadcrumbs**
- - **content**
  - **footer**
 
-### Сниппеты
- - **hreflang** (создает hreflang теги)
- - **breadSchema** (создает семантическую разметку для хлебных крошек)
+### Snippets
+ - **csrf** (CSRF TOKEN)
+ - **babelGetId**
 
-### Плагины
+### Plugins
  - **Boilerplate**
-    - привязывается CSS-файл к странице редактирования ресурсов(assets/boilerplate/mgr/manager.css)
-    - сжимает вывод html для Google (можно отменить в системных настройках boilerplate_compress_output_html)
-    - возможность спрятать вертикальный таб для tv(системная настройка boilerplate_hide_vtabs_tv)
- - **managerBreadCrumbs** (хлебные крошки в админке)
- - **changeContext** (переключение контекстов)
- - **uploadFiles** (запрещает загрузку файлов в корневой каталог)
+    - binds a CSS file to the resource editing page (assets/boilerplate/mgr/manager.css)
+    - compresses html output for Google (can be overridden in the boilerplate_compress_output_html system settings)
+    - the ability to hide the vertical tab for TV (boilerplate_hide_vtabs_tv system setting)
+    - prohibits uploading files to the root directory (OnFileManagerUpload event) 
+    - context switching (OnMODXInit event)
  
-### Системные настройки
+### System settings
 **CORE**
  
- | Ключ | Значение | Описание |
- | -- | -- | -- | 
- | allow_multiple_emails | Нет | чтобы у каждого пользователя была своя электронная почта |
- | friendly_alias_realtime | Да | генерация псевдонима в реальном времени |
- | friendly_urls | Да | включение дружественных URL |
- | friendly_urls_strict | Да | строгий режим |
- | publish_default | Да | по умолчанию ресурс создаётся опубликованным |
- | use_alias_path | Да | чтобы в URL учитывался псевдоним родителя, а не его замороженный URL |
- | friendly_alias_translit | russian | настройка транслитерации |
- | resource_tree_node_name | menutitle | чтобы названия ресурсов в дереве были покороче |
- | resource_tree_node_tooltip | alias | чтобы можно было понять, какой у ресурса адрес |
- | locale | ru_RU.utf8 | вдруг, надо будет генерировать даты с названиями месецев |
- | request_method_strict | Да | отключение доступа к странице по id |
- | unauthorized_page | id 403 | id 403 страницы |
- | error_page_header | HTTP/1.0 404 Not Found | заголовок для 404 ошибки |
- | error_page | id 404 | id 404 страницы |
- | site_unavailable_page | id 503 | id 503 страницы |
- | log_deprecated | Нет | устаревшие функции в журнале ошибок |
+ | Key                         | Value                  | Description                                                      |
+ |-----------------------------|------------------------|------------------------------------------------------------------| 
+ | allow_multiple_emails       | no                     | so that each user has their own email address                    |
+ | friendly_alias_realtime     | yes                    | real-time alias generation                                       |
+ | friendly_urls               | yes                    | enabling friendly URLs                                           |
+ | friendly_urls_strict        | yes                    | strict regime                                                    |
+ | publish_default             | yes                    | by default, the resource is created published                    |
+ | use_alias_path              | yes                    | so that the URL considers the parent's alias, not its frozen URL |
+ | resource_tree_node_tooltip  | alias                  | so you can figure out what the address of the resource is        |
+ | locale                      | en_US.utf8             | locale setting                                                   |
+ | request_method_strict       | yes                    | disabling page access by id                                      |
+ | unauthorized_page           | id 403                 | ID of the 403 page                                               |
+ | error_page                  | id 404                 | ID of the 404 page                                               |
+ | error_page_header           | HTTP/1.0 404 Not Found | header for a 404 error                                           |
+ | site_unavailable_page       | id 503                 | ID of the 503 page                                               |
+ | log_deprecated              | no                     | deprecated functions in the error log                            |
  
  
 **PDOTOOLS**
 
- | Ключ | Значение | Описание |
- | -- | -- | -- |
- | pdotools_fenom_default | 1 | использование Fenom в чанках |
- | pdotools_fenom_modx | 1 | разрешаем MODX в Fenom |
- | pdotools_fenom_parser | 1 | использование Fenom на страницах |
- | pdotools_elements_path | {core_path}/ | для загрузки файловых элементов |
- 
-**TINYCOMPRESSOR**
+ | Key                    | Value        | Description            |
+ |------------------------|--------------|------------------------|
+ | pdotools_fenom_default | yes          | use of Fenom in chunks |
+ | pdotools_fenom_modx    | yes          | enable MODX in Fenom   |
+ | pdotools_fenom_parser  | yes          | use of Fenom on pages  |
+ | pdotools_elements_path | {core_path}/ | to load file elements  |
 
- | Ключ | Значение | Описание |
- | -- | -- | -- |
- | tinycompressor_tinypng_upload_enable | Да | сжимает загружаемые изображения |
  
 **TINYMCERTE**
 
- | Ключ | Значение | Описание |
- | -- | -- | -- |
- | tinymcerte.plugins | advlist autolink lists modximage charmap print preview anchor visualblocks searchreplace code fullscreen insertdatetime media table contextmenu paste modxlink textcolor colorpicker template | Плагины |
- | tinymcerte.toolbar1 | undo redo \| styleselect \| backcolor forecolor bold italic \| alignleft aligncenter alignright alignjustify \| bullist numlist outdent indent \| link image \| template | Панель инструментов 1 |
- | tinymcerte.external_config | {assets_path}components/tinymcerte/js/external-config.json | Внешний конфиг |
+ | Key                        | Value                                                                                                                                                                                          | Description     |
+ |----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
+ | tinymcerte.plugins         | advlist autolink lists modximage charmap print preview anchor visualblocks searchreplace code fullscreen insertdatetime media table contextmenu paste modxlink textcolor colorpicker template  | Plugins         |
+ | tinymcerte.toolbar1        | undo redo \| styleselect \| backcolor forecolor bold italic \| alignleft aligncenter alignright alignjustify \| bullist numlist outdent indent \| link image \| template                       | Toolbar 1       |
+ | tinymcerte.external_config | {assets_path}components/tinymcerte/js/external-config.json                                                                                                                                     | External config |
  
 **BOILERPLATE**
 
- | Ключ | Значение | Описание |
- | -- | -- | -- |
- | boilerplate_compress_output_html | Да | сжимает вывод html для Google |
- | boilerplate_hide_vtabs_tv | Нет | Прячет вертикальный таб для tv |
+ | Key                                | Value | Description                              |
+ |------------------------------------|------|------------------------------------------|
+ | boilerplate_compress_output_html   | yes  | compresses html output for Google        |
+ | boilerplate_hide_vtabs_tv          | no   | hides the vertical tab for tv            |
+ | boilerplate_menu_description       | no   | hides component descriptions in the menu |
 
-## Другое
- - Установка HTTP заголовоков
+## Other
+ - Setting HTTP Headers
     - X-Frame-Options:deny
     - X-XSS-Protection:1;mode=block
     - X-Content-Type-Options:nosniff
     - Referrer-Policy:no-referrer
     - Cache-Control: max-age=31536000, must-revalidate
- - Удаляется файл changelog.txt, чтобы убрать сообщение о том, что безопасность сайта не в порядке
- - Ппереименовываются файлы ht.access в корне и в папке /core/, чтобы заработали дружественные URL
- - Меняем контент главного шаблона
-    
-    
-## TODO    
- - https://modx.pro/development/13157
- - https://github.com/GoogleChromeLabs/quicklink
+ - The changelog.txt file is removed to eliminate the message indicating that the site's security is not in order.
+ - Files named ht.access in the root and in the /core/ folder are renamed to enable friendly URLs.
+ - Changing the content of the base template

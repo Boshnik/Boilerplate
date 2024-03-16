@@ -23,13 +23,13 @@ class OnMODXInit extends Event
         $alias = $this->modx->getOption('request_param_alias', null, 'alias', true);
         $request = &$_REQUEST[$alias];
 
-        $q = $this->modx->newQuery('modContextSetting', array('key' => 'base_url', 'value:!=' => ''));
+        $q = $this->modx->newQuery('modContextSetting', [
+            'key' => 'base_url',
+            'value:!=' => ''
+        ]);
         $q->select('context_key,value');
 
-        $tstart = microtime(true);
         if ($q->prepare() && $q->stmt->execute()) {
-            $this->modx->queryTime += microtime(true) - $tstart;
-            $this->modx->executedQueries++;
             while ($row = $q->stmt->fetch(\PDO::FETCH_ASSOC)) {
                 $base_url = trim($row['value'], '/');
                 $context = $row['context_key'];

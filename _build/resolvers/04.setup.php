@@ -16,10 +16,6 @@ $packages = [
         'version' => '1.8.0-pl',
         'service_url' => 'modstore.pro',
     ],
-    'AjaxForm' => [
-        'version' => '1.1.9-pl',
-        'service_url' => 'modstore.pro',
-    ],
     'autoRedirector' => [
         'version' => '1.0.2-rc',
         'service_url' => 'modstore.pro',
@@ -201,7 +197,7 @@ $installPackage = function ($packageName, $options = []) use ($modx, $downloadPa
 switch ($options[xPDOTransport::PACKAGE_ACTION]) {
     case xPDOTransport::ACTION_INSTALL:
     case xPDOTransport::ACTION_UPGRADE:
-        if (is_array($options['update_packages'])) {
+        if (isset($options['update_packages']) && is_array($options['update_packages'])) {
             foreach ($options['update_packages'] as $name) {
                 $data = $packages[$name];
                 $installed = $modx->getIterator('transport.modTransportPackage', ['package_name' => $name]);

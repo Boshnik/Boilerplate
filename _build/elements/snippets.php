@@ -9,8 +9,4 @@ return [
         'file' => 'babelgetid',
         'description' => '',
     ],
-    'hashFile' => [
-        'file' => 'hashfile',
-        'description' => '',
-    ]
 ];
