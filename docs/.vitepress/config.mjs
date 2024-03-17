@@ -7,7 +7,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: 'https://boshnik.com/' },
+      { text: 'Home', link: 'https://boshnik.com/', target: '_self' },
       { text: 'Documentation', link: '/docs/' }
     ],
 
