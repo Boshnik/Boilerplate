@@ -1,3 +1,5 @@
 .idea
-_build
+_build/resolvers/08.symlinks.php
 core/components/boilerplate/vendor
+node_modules
+pass.txt

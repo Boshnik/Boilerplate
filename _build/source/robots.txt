@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /assets/
+Disallow: /connectors/
+Disallow: /manager/
+Disallow: /core/
+Disallow: *?
+
+# Host: boshnik.com
+# Sitemap: https://boshnik.com/sitemap.xml
