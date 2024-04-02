@@ -1,7 +1,10 @@
 # Boilerplate
 Basic Website Configuration
 
+**Versions**: 1.3.0-pl
+
 ## Packages
+- **PageBlocks** (block constructor)
 - **ClientConfig** (site configuration)
 - **FormIt** (processing forms, sending requests to e-mail)
 - **TinyMCE Rich Text Editor** (visual editor)
