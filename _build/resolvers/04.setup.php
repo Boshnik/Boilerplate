@@ -8,29 +8,9 @@ if (!$transport->xpdo) {
 
 $modx =& $transport->xpdo;
 $packages = [
-//    'Guzzle7' => [
-//        'version' => '7.3.1-pl',
-//        'service_url' => 'modx.com',
-//    ],
-    'Ace' => [
-        'version' => '1.8.0-pl',
-        'service_url' => 'modstore.pro',
-    ],
-    'autoRedirector' => [
-        'version' => '1.0.2-rc',
-        'service_url' => 'modstore.pro',
-    ],
-    'controlErrorLog' => [
-        'version' => '1.3.0-pl',
-        'service_url' => 'modstore.pro',
-    ],
-    'pdoTools' => [
-        'version' => '2.13.2-pl',
-        'service_url' => 'modstore.pro',
-    ],
-    'SocialNetworks' => [
-        'vesrion' => '1.0.4-pl',
-        'service_url' => 'modstore.pro',
+    'PageBlocks' => [
+        'version' => '1.0.0-pl',
+        'service_url' => 'modx.com',
     ],
     'ModxMinify' => [
         'version' => '1.0.2-pl',
@@ -61,6 +41,26 @@ $packages = [
         'version' => '2.0.6-pl',
         'service_url' => 'modx.com',
         'author' => 'sterc'
+    ],
+    'Ace' => [
+        'version' => '1.8.0-pl',
+        'service_url' => 'modstore.pro',
+    ],
+    'autoRedirector' => [
+        'version' => '1.0.2-rc',
+        'service_url' => 'modstore.pro',
+    ],
+    'controlErrorLog' => [
+        'version' => '1.3.0-pl',
+        'service_url' => 'modstore.pro',
+    ],
+    'pdoTools' => [
+        'version' => '2.13.2-pl',
+        'service_url' => 'modstore.pro',
+    ],
+    'SocialNetworks' => [
+        'vesrion' => '1.0.4-pl',
+        'service_url' => 'modstore.pro',
     ],
 ];
 

@@ -22,9 +22,9 @@
     {/block}
 
     {block 'content'}
-        {*'!PageBlocks'|snippet: [
+        {'!PageBlocks'|snippet: [
             'fileElements' => 1
-        ]*}
+        ]}
     {/block}
 
     {block 'footer'}
