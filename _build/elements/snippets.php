@@ -9,4 +9,12 @@ return [
         'file' => 'babelgetid',
         'description' => '',
     ],
+    'Encrypt' => [
+        'file' => 'encrypt',
+        'description' => '',
+    ],
+    'Decrypt' => [
+        'file' => 'decrypt',
+        'description' => '',
+    ],
 ];
