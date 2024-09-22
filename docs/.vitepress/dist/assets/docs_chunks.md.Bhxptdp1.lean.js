@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as a,a3 as t}from"./chunks/framework.D5kTTP_a.js";const o=JSON.parse('{"title":"Chunks","description":"","frontmatter":{},"headers":[],"relativePath":"docs/chunks.md","filePath":"docs/chunks.md"}'),h={name:"docs/chunks.md"},n=t("",9),k=[n];function l(p,E,e,r,g,d){return a(),i("div",null,k)}const F=s(h,[["render",l]]);export{o as __pageData,F as default};
