@@ -16,6 +16,13 @@ export default defineConfig({
         text: '',
         items: [
           { text: 'Getting Started', link: '/docs/' },
+          { text: 'Packages', link: '/docs/packages' },
+          { text: 'Resources', link: '/docs/resources' },
+          { text: 'Chunks', link: '/docs/chunks' },
+          { text: 'Snippets', link: '/docs/snippets' },
+          { text: 'Plugins', link: '/docs/plugins' },
+          { text: 'System settings', link: '/docs/settings' },
+          { text: 'Other', link: '/docs/other' },
         ]
       }
     ],

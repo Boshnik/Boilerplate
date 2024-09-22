@@ -37,6 +37,8 @@ Basic Website Configuration
 ### Snippets
  - **csrf** (CSRF TOKEN)
  - **babelGetId**
+ - **Encrypt**
+ - **Decrypt**
 
 ### Plugins
  - **Boilerplate**
