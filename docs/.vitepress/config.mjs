@@ -18,6 +18,7 @@ export default defineConfig({
           { text: 'Getting Started', link: '/docs/' },
           { text: 'Packages', link: '/docs/packages' },
           { text: 'Resources', link: '/docs/resources' },
+          { text: 'Templates', link: '/docs/templates' },
           { text: 'Chunks', link: '/docs/chunks' },
           { text: 'Snippets', link: '/docs/snippets' },
           { text: 'Plugins', link: '/docs/plugins' },
