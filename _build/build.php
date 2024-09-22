@@ -605,6 +605,9 @@ class BoilerplatePackage
             'chunks' => $this->listElements['chunks'],
             'templates' => $this->listElements['templates'],
             'packages' => $this->listElements['packages'],
+            'requires' => [
+                'php' => '>=8.1.0',
+            ],
             'setup-options' => array(
                 'source' => $this->config['build'] . 'setup.options.php',
             ),

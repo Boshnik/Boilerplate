@@ -23,19 +23,18 @@ class OnMODXInit extends Event
         $alias = $this->modx->getOption('request_param_alias', null, 'alias', true);
         $request = &$_REQUEST[$alias];
 
-        $q = $this->modx->newQuery('modContextSetting', [
+        $q = $this->modx->newQuery(\modContextSetting::class, [
             'key' => 'base_url',
             'value:!=' => ''
         ]);
         $q->select('context_key,value');
-
         if ($q->prepare() && $q->stmt->execute()) {
             while ($row = $q->stmt->fetch(\PDO::FETCH_ASSOC)) {
                 $base_url = trim($row['value'], '/');
                 $context = $row['context_key'];
                 if (preg_match('/^(' . $base_url . ')\//i', $request)) {
-                    if ($context != 'web') {
-                        $this->modx->switchContext($context);
+                    if ($context !== 'web') {
+                        $this->modx->switchContext($context, true);
                     }
                     $request = preg_replace('/^' . $base_url . '\//', '', $request);
                     break;

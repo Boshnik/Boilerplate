@@ -9,23 +9,12 @@ use modX;
  */
 class Boilerplate
 {
-    /** @var modX $modx */
-    public $modx;
-
-    /**
-     * The class config
-     * @var array $config
-     */
-    public $config = [];
-
     /**
      * @param modX $modx
      * @param array $config
      */
-    function __construct(modX &$modx, array $config = [])
+    function __construct(public modX $modx, public array $config = [])
     {
-        $this->modx =& $modx;
-
         $corePath = MODX_CORE_PATH . 'components/boilerplate/';
         $assetsUrl = MODX_ASSETS_URL . 'components/boilerplate/';
 
@@ -40,6 +29,5 @@ class Boilerplate
         $this->modx->addPackage('boilerplate', $this->config['modelPath']);
         $this->modx->lexicon->load('boilerplate:default');
     }
-
 
 }
