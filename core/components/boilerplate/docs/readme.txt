@@ -1,6 +1,9 @@
 --------------------
 Boilerplate
 --------------------
-Author: Aleksandr Huz <Superboshnik@gmail.com>
-Site: https://boshnik.com/
+Author: Aleksandr Huz
+--------------------
+Email: hi@boshnik.com
+--------------------
+Docs: https://boilerplate.boshnik.com/docs/
 --------------------
