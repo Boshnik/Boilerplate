@@ -1,7 +1,7 @@
 # Boilerplate
 Basic Website Configuration
 
-- **Version:** <Badge type="tip" text="1.3.1-pl" />
+- **Version:** <Badge type="tip" text="1.3.2-pl" />
 - **Support MODX:** <Badge type="warning" text="2 / 3" />
 - **Support PHP:** <Badge type="danger" text="^8.1" />
 - **Author:** <Badge type="info" text="Boshnik" />
