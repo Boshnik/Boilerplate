@@ -14,6 +14,10 @@ If you find an error on the website or need help with configuring the component,
 
 ## Changelog
 
+### 1.3.2 (23.09.2024)
+---
+- Improved Encrypt and Decrypt snippets
+
 ### 1.3.1-pl (23.09.2024)
 ---
 - Added Encrypt and Decrypt snippets

@@ -51,11 +51,11 @@ return $input;
 ```
 ## Encrypt
 
-For string encryption with the ability to set an expiration period.
+For encrypting a string or array with the option to set an expiration date.
 
 ### Parameters
- - **input**  - String for encryption.
- - **expiration** - Expiration period in seconds.
+ - **input**  - String or array for encryption.
+ - **expiration** - Expiration time in seconds.
 
 ```php
 <?php
@@ -63,13 +63,23 @@ For string encryption with the ability to set an expiration period.
 $key = md5($modx->uuid);
 $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
 
-$timestamp = isset($expiration) ? time() + $expiration : null;
+if ($iv === false) {
+    return 'Error generating IV';
+}
+
+$expiration = $expiration ?? 0;
+$timestamp = $expiration > 0 ? time() + $expiration : null;
+
+if (is_array($input)) {
+    $input = json_encode($input);
+}
+
 $input .= $timestamp ? '::' . $timestamp : '';
 
 $encryptedData = openssl_encrypt($input, 'aes-256-cbc', $key, 0, $iv);
 $base64EncryptedData = base64_encode($encryptedData . '::' . $iv);
 
-return str_replace(['+', '/', '='], ['-', '_', ''], $base64EncryptedData);
+return str_replace('/', '_', $base64EncryptedData);
 ```
 
 ### Example
@@ -87,7 +97,7 @@ Creating a link for email confirmation.
 
 ## Decrypt
 
-For decrypting a string. If decryption fails or the expiration period has passed, an empty string is returned.
+For decrypting a string. If decryption fails or the expiration time has passed, an empty string is returned.
 
 ### Parameters
  - **input** - encrypted string
@@ -96,15 +106,43 @@ For decrypting a string. If decryption fails or the expiration period has passed
 <?php
 
 $key = md5($modx->uuid);
-$input = str_replace(['-', '_'], ['+', '/'], $input);
+$input = str_replace('_', '/', $input);
 
 list($encryptedData, $iv) = explode('::', base64_decode($input), 2);
 $decryptedData = openssl_decrypt($encryptedData, 'aes-256-cbc', $key, 0, $iv);
 
 if (strpos($decryptedData, '::') !== false) {
-    list($data, $timestamp) = explode('::', $decryptedData);
-    return (time() > $timestamp) ? '' : $data;
+    $parts = explode('::', $decryptedData);
+    if (count($parts) === 2) {
+        list($data, $timestamp) = $parts;
+        if (time() > $timestamp) {
+            return '';
+        }
+    }
+    $data = $parts[0];
+} else {
+    $data = $decryptedData;
 }
 
-return $decryptedData;
+$decodedData = json_decode($data, true);
+
+return (json_last_error() === JSON_ERROR_NONE) ? $decodedData : $data;
+```
+
+### Example
+
+```html
+{set $input = 'hi@boshnik.com'}
+{set $alias = 'Encrypt'|snippet: [
+    'input' => $input, 
+    'expiration' => '3600'
+]}
+
+Output: {$alias} // VkdOYkpLMGxPaFdVUmpBWmFSWkRic0srMHE4MlFqSmk0VFlFajJMWFRCZz06OjRlmRwsKwO5dHQikkoQ74U
+
+// Decrypt
+{set $result = 'Decrypt'|snippet: [
+    'input' => $alias
+]};
+Output: {$result} // hi@boshnik.com
 ```
