@@ -12,6 +12,14 @@ $packages = [
         'version' => '1.0.0-pl',
         'service_url' => 'modx.com',
     ],
+    'FastPaginate' => [
+        'version' => '1.0.0-pl',
+        'service_url' => 'modx.com',
+    ],
+    'FetchIt' => [
+        'version' => '3.1.2-pl',
+        'service_url' => 'modx.com',
+    ],
     'ModxMinify' => [
         'version' => '1.0.2-pl',
         'service_url' => 'modx.com',
